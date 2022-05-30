@@ -1,0 +1,69 @@
+@import "static-variables.scss";
+
+
+.orders-zone {
+    .order-filter {
+        margin-top: 15px;
+        ul {
+            list-style: none;
+            li {
+                display: inline-block;
+                margin-left: 5px;
+                a {
+                    display: inline-block;
+                    border: 2px solid $selected_color;
+                    padding: 5px;
+                    padding-left: 10px;
+                    padding-right: 10px;
+                    border-radius: 5px;
+                    color: $selected_color;
+                    &:hover {
+                        background-color: $selected_color;
+                        color: $ligth_color;
+                    }
+                }
+                &:first-child {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+    .orders {
+        .order {
+            display: block;
+            margin-top: 15px;
+            border: 2px solid $selected_color;
+            border-radius: 5px;
+            padding: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+            &:hover {
+                background-color: $opacity_selected_color;
+            }
+            .order-header {
+                color: $ligth_color;
+                h5{
+                    font-size: 22px;
+                    display: inline-block;
+                }
+                .status {
+                    font-size: 18px;
+                    display: inline;
+                    float: right;
+                    span {
+                        color: $green_color;
+                    }
+                }
+                .price::after {
+                    content: "\20BD";
+                }
+                p {
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+    .pagination {
+        margin-bottom: 10px;
+    }
+}

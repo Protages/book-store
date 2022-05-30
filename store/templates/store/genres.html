@@ -1,0 +1,23 @@
+{% extends 'store/base.html' %}
+
+
+{% block content %}
+    <div class="genres-title">
+        <h3>Жанры</h3>
+    </div>
+
+    <div class="genres">
+        {% for genre in genres %}
+            <a class="genre" href="{{ genre.get_absolute_url }}">
+                <img src="{{ genre.image.url }}" alt="{{ genre.title }}">
+                <h4 class="title">{{ genre.title }}</h4>
+                <span class="books-count">{{ genre.book_set.all.count }} книг</span>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+
+{% block sidebar %}
+
+{% endblock %}

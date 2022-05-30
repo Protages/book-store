@@ -1,0 +1,1334 @@
+/*      null      */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre,
+form, fieldset, input, p, blockquote, table, th, td, embed, object {
+  padding: 0;
+  margin: 0; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+fieldset, img, abbr {
+  border: 0; }
+
+address, caption, cite, code, dfn, em,
+h1, h2, h3, h4, h5, h6, strong, th, var {
+  font-weight: normal;
+  font-style: normal; }
+
+ul {
+  list-style: none; }
+
+caption, th {
+  text-align: left; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 1.0em; }
+
+q:before, q:after {
+  content: ''; }
+
+a, ins {
+  text-decoration: none; }
+
+/*      null      */
+body {
+  background-color: #212529;
+  font-family: 'Roboto', sans-serif; }
+
+.container {
+  width: 1280px;
+  margin: 0 auto;
+  border: 1px dotted grey; }
+
+.header {
+  background-color: #212529;
+  height: 80px; }
+  .header .container {
+    height: 80px;
+    position: relative; }
+  .header .menu {
+    position: absolute;
+    top: 50%;
+    margin-top: -0.825em; }
+    .header .menu .logo-li {
+      margin-right: 60px; }
+      .header .menu .logo-li a {
+        background: url("img/booke-img.png") no-repeat;
+        background-size: 60px 60px;
+        position: absolute;
+        top: -20px;
+        left: 0;
+        width: 60px;
+        height: 60px; }
+    .header .menu a:hover,
+    .header .menu .selected {
+      opacity: 0.7; }
+    .header .menu .serch-li {
+      position: relative; }
+      .header .menu .serch-li * {
+        box-sizing: border-box; }
+      .header .menu .serch-li form {
+        position: absolute;
+        top: -23px;
+        left: 0;
+        width: auto;
+        float: right; }
+      .header .menu .serch-li input {
+        width: 150px;
+        padding: 7px;
+        padding-left: 15px;
+        border-radius: 42px;
+        border: 2px solid #324b4e;
+        background: #fefbf1;
+        outline: none;
+        position: relative;
+        transition: .3s linear; }
+      .header .menu .serch-li input:focus {
+        width: 250px; }
+      .header .menu .serch-li button {
+        width: 20px;
+        height: 20px;
+        background: url("img/lupa.png") no-repeat center;
+        background-size: 30px;
+        border: none;
+        position: absolute;
+        top: 7px;
+        right: 10px; }
+    .header .menu li {
+      display: inline-block;
+      margin-left: 15px; }
+    .header .menu li:nth-child(1) {
+      margin-left: 0; }
+  .header .login {
+    position: absolute;
+    top: 50%;
+    margin-top: -1.1em;
+    right: 0px; }
+    .header .login .login-user {
+      position: relative;
+      display: block;
+      background-color: #fefbf1;
+      color: black;
+      font-weight: 500;
+      border-radius: 5px;
+      padding: 10px 30px;
+      padding-left: 70px;
+      text-align: right;
+      font-size: 18px;
+      outline: none;
+      border: none;
+      z-index: 2; }
+    .header .login .login-user::before {
+      content: "";
+      background: url("img/login-img.png") no-repeat;
+      background-size: 25px 25px;
+      width: 25px;
+      height: 25px;
+      position: absolute;
+      top: 8px;
+      left: 25px; }
+    .header .login .login-user:hover {
+      outline: 3px solid #0DB8DE;
+      cursor: pointer; }
+    .header .login .dropdown-menu {
+      position: relative;
+      background-color: #fefbf1;
+      border-radius: 5px;
+      margin-top: 8px;
+      display: none;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.749); }
+      .header .login .dropdown-menu li a {
+        display: block;
+        padding: 5px;
+        padding-left: 10px;
+        color: black; }
+      .header .login .dropdown-menu li a:hover {
+        outline: 1px solid #0DB8DE;
+        background-color: #0DB8DE;
+        border-radius: 5px;
+        color: #fefbf1; }
+      .header .login .dropdown-menu .triangle-top {
+        position: absolute;
+        top: -10px;
+        left: 27px;
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 10px solid #fefbf1; }
+    .header .login .dropdown-menu.open {
+      display: block;
+      transform: translateY(-10%);
+      animation: ani 0.5s forwards, ani2 0.3s forwards;
+      z-index: 1; }
+@keyframes ani {
+  0% {
+    transform: translateY(-10%); }
+  100% {
+    transform: translateY(0); } }
+@keyframes ani2 {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+  .header a {
+    color: #fefbf1;
+    font-size: 20px; }
+
+.center {
+  background-color: #222D32;
+  min-height: 900px;
+  padding-bottom: 20px; }
+  .center .column {
+    border: 1px dotted red;
+    display: inline-block; }
+  .center .column-left {
+    width: 900px; }
+  .center .column-rigth {
+    width: 350px;
+    float: right; }
+  .center .content .sort {
+    margin-top: 15px;
+    border-radius: 5px;
+    background-color: #212529;
+    display: inline-block; }
+    .center .content .sort .selected {
+      background-color: #0DB8DE;
+      border-radius: 5px;
+      color: #fefbf1; }
+    .center .content .sort a, .center .content .sort span {
+      padding: 10px;
+      color: #fefbf1;
+      font-size: 16px;
+      display: inline-block; }
+    .center .content .sort a:hover {
+      background-color: #0DB8DE;
+      border-radius: 5px;
+      color: #fefbf1; }
+  .center .content .books .book {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #fefbf1;
+    border-radius: 5px; }
+    .center .content .books .book::after {
+      content: "";
+      display: table;
+      clear: both; }
+    .center .content .books .book .image {
+      display: inline-block; }
+      .center .content .books .book .image:hover {
+        opacity: 0.7; }
+    .center .content .books .book img {
+      width: 150px;
+      border-radius: 5px; }
+    .center .content .books .book .info {
+      width: 710px;
+      float: right; }
+      .center .content .books .book .info .title {
+        display: block;
+        font-size: 28px;
+        margin-bottom: 10px;
+        color: black; }
+        .center .content .books .book .info .title:hover {
+          opacity: 0.7; }
+      .center .content .books .book .info p {
+        margin-bottom: 10px; }
+      .center .content .books .book .info .genres-book {
+        margin-bottom: 10px; }
+      .center .content .books .book .info .genres-book .comma:last-child {
+        display: none; }
+    .center .content .books .book .buy {
+      position: relative;
+      margin-top: 10px; }
+      .center .content .books .book .buy .btn-buy {
+        display: inline-block;
+        box-sizing: border-box;
+        text-align: center;
+        border: none;
+        border-radius: 5px;
+        border: 2px solid #0DB8DE;
+        width: 150px;
+        padding: 5px;
+        padding-left: 20px;
+        padding-right: 20px;
+        background-color: #0DB8DE;
+        color: #fefbf1;
+        font-size: 16px;
+        cursor: pointer; }
+        .center .content .books .book .buy .btn-buy.in_cart {
+          background-color: #00bb00;
+          border-color: #00bb00; }
+        .center .content .books .book .buy .btn-buy span::before {
+          display: inline-block;
+          vertical-align: top;
+          content: "";
+          background-image: url("img/basket-white.svg");
+          background-repeat: no-repeat;
+          width: 20px;
+          height: 20px;
+          margin-right: 7px;
+          background-size: 20px; }
+        .center .content .books .book .buy .btn-buy:hover {
+          opacity: 0.8; }
+      .center .content .books .book .buy .price {
+        margin-left: 15px;
+        font-size: 18px; }
+        .center .content .books .book .buy .price::after {
+          content: "\20BD"; }
+      .center .content .books .book .buy .old-price {
+        margin-left: 10px;
+        font-size: 14px;
+        color: #424242;
+        text-decoration: line-through; }
+        .center .content .books .book .buy .old-price::after {
+          content: "\20BD"; }
+      .center .content .books .book .buy .favourites {
+        position: absolute;
+        display: inline-block;
+        right: 20px;
+        top: 10px; }
+        .center .content .books .book .buy .favourites .btn {
+          padding: 5px;
+          padding-left: 15px;
+          padding-right: 15px;
+          color: #0DB8DE;
+          border: 2px solid #0DB8DE;
+          border-radius: 5px; }
+          .center .content .books .book .buy .favourites .btn:hover {
+            background-color: #0DB8DE;
+            color: #fefbf1;
+            cursor: pointer; }
+        .center .content .books .book .buy .favourites .in_favourites {
+          background-color: #0DB8DE;
+          color: #fefbf1;
+          cursor: pointer; }
+  .center .content .pagination {
+    margin: 20px;
+    text-align: center; }
+    .center .content .pagination .list-pages {
+      position: relative;
+      background-color: #fefbf1;
+      color: black;
+      box-sizing: border-box;
+      font-size: 18px;
+      height: 40px;
+      text-align: center;
+      padding: 10px;
+      padding-left: 10px;
+      padding-right: 15px;
+      border-radius: 5px; }
+      .center .content .pagination .list-pages .current {
+        font-size: 22px; }
+      .center .content .pagination .list-pages .btn {
+        display: block;
+        background-color: #fefbf1;
+        border-radius: 5px;
+        width: 40px;
+        height: 40px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 20px;
+        margin: 15px;
+        position: absolute;
+        top: -14px; }
+        .center .content .pagination .list-pages .btn:hover {
+          opacity: 0.7; }
+      .center .content .pagination .list-pages .previous {
+        background-image: url("img/previous.png");
+        left: -70px; }
+      .center .content .pagination .list-pages .next {
+        background-image: url("img/next.png");
+        right: -70px; }
+      .center .content .pagination .list-pages a {
+        margin-left: 5px;
+        color: black; }
+      .center .content .pagination .list-pages span {
+        margin-left: 5px; }
+  .center .sidebar {
+    padding-top: 65px; }
+    .center .sidebar .genres {
+      padding: 10px;
+      background-color: #fefbf1;
+      border-radius: 5px; }
+      .center .sidebar .genres .title {
+        font-size: 24px;
+        color: black; }
+      .center .sidebar .genres .genre {
+        position: relative;
+        display: block;
+        padding: 12px;
+        padding-left: 55px;
+        margin-top: 5px; }
+        .center .sidebar .genres .genre img {
+          position: absolute;
+          top: 1px;
+          left: 5px;
+          width: 40px; }
+        .center .sidebar .genres .genre .genre-title {
+          color: black;
+          font-size: 16px; }
+        .center .sidebar .genres .genre:hover {
+          outline: 2px solid #212529;
+          border-radius: 5px;
+          background-color: #171c4b0e; }
+      .center .sidebar .genres .all {
+        display: inline-block;
+        padding: 10px;
+        margin-top: 15px;
+        color: black;
+        font-size: 14px; }
+        .center .sidebar .genres .all:hover {
+          opacity: 0.7; }
+  .center .content .genres-title {
+    margin-top: 15px;
+    border-radius: 5px;
+    background-color: #fefbf1;
+    display: inline-block;
+    padding: 10px;
+    padding-left: 70px;
+    padding-right: 70px; }
+    .center .content .genres-title h3 {
+      color: black;
+      font-size: 24px; }
+  .center .content .genres {
+    margin-top: 15px;
+    background-color: #fefbf1;
+    border-radius: 5px;
+    padding: 10px;
+    padding-bottom: 15px; }
+    .center .content .genres .genre {
+      display: block;
+      position: relative;
+      margin-top: 5px;
+      padding: 15px;
+      padding-left: 80px;
+      padding-bottom: 10px; }
+      .center .content .genres .genre img {
+        position: absolute;
+        top: 0px;
+        left: 5px;
+        width: 60px; }
+      .center .content .genres .genre .title {
+        font-size: 18px;
+        color: black; }
+      .center .content .genres .genre .books-count {
+        color: grey; }
+      .center .content .genres .genre:hover {
+        outline: 2px solid #212529;
+        border-radius: 5px;
+        background-color: #171c4b0e; }
+  .center .book-detail {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #fefbf1;
+    border-radius: 5px; }
+    .center .book-detail .top .image {
+      display: inline-block; }
+      .center .book-detail .top .image img {
+        width: 300px;
+        border-radius: 5px; }
+    .center .book-detail .top .info {
+      vertical-align: top;
+      margin-left: 15px;
+      display: inline-block; }
+      .center .book-detail .top .info .book-title {
+        font-size: 32px; }
+      .center .book-detail .top .info p {
+        margin-top: 10px; }
+        .center .book-detail .top .info p .comma:last-child {
+          display: none; }
+    .center .book-detail .top::after {
+      content: "";
+      display: table;
+      clear: both; }
+    .center .book-detail .middle {
+      margin-top: 15px; }
+      .center .book-detail .middle .description-title {
+        font-size: 20px; }
+      .center .book-detail .middle hr {
+        border: none;
+        outline: 2px solid #212529; }
+      .center .book-detail .middle .description {
+        margin-top: 15px; }
+    .center .book-detail .bottom .buy {
+      margin-top: 15px; }
+      .center .book-detail .bottom .buy button {
+        border: none;
+        border-radius: 8px;
+        width: 150px;
+        padding: 10px;
+        padding-left: 45px;
+        padding-right: 20px;
+        background-color: #212529;
+        color: #fefbf1;
+        font-size: 16px;
+        background-image: url("img/product-card-img.png");
+        background-repeat: no-repeat;
+        background-size: 30px;
+        background-position: 27px 9px; }
+      .center .book-detail .bottom .buy .price {
+        margin-left: 15px;
+        font-size: 18px; }
+        .center .book-detail .bottom .buy .price::after {
+          content: "\20BD"; }
+      .center .book-detail .bottom .buy .old-price {
+        margin-left: 10px;
+        font-size: 14px;
+        color: #424242;
+        text-decoration: line-through; }
+        .center .book-detail .bottom .buy .old-price::after {
+          content: "\20BD"; }
+  .center .genre-detail .title {
+    background-color: #fefbf1;
+    display: inline-block;
+    border-radius: 5px;
+    margin-top: 15px;
+    padding: 5px;
+    padding-bottom: 10px;
+    padding-left: 75px;
+    padding-right: 40px;
+    position: relative; }
+    .center .genre-detail .title img {
+      display: inline-block;
+      position: absolute;
+      top: 5px;
+      left: 0px;
+      width: 50px;
+      margin-left: 15px; }
+    .center .genre-detail .title h2 {
+      font-size: 24px;
+      color: black; }
+    .center .genre-detail .title .books-count {
+      color: grey; }
+  .center .genre-detail .sort {
+    margin-top: 15px;
+    border-radius: 5px;
+    background-color: #212529;
+    display: inline-block; }
+    .center .genre-detail .sort a {
+      padding: 10px;
+      color: #fefbf1;
+      font-size: 16px;
+      display: inline-block; }
+    .center .genre-detail .sort a:hover {
+      background-color: #171C4B;
+      border-radius: 5px;
+      color: #fefbf1; }
+  .center .content .authors-title {
+    margin-top: 15px;
+    border-radius: 5px;
+    background-color: #fefbf1;
+    display: inline-block;
+    padding: 10px;
+    padding-left: 70px;
+    padding-right: 70px; }
+    .center .content .authors-title h3 {
+      color: black;
+      font-size: 24px; }
+  .center .content .authors {
+    background-color: #fefbf1;
+    margin-top: 15px;
+    border-radius: 5px;
+    padding: 10px; }
+    .center .content .authors .search input {
+      padding: 10px;
+      width: 100%;
+      border: 2px solid black;
+      border-radius: 10px; }
+    .center .content .authors .author {
+      display: block;
+      margin-top: 10px; }
+      .center .content .authors .author img {
+        display: inline-block;
+        width: 80px;
+        border-radius: 10px; }
+      .center .content .authors .author .info {
+        padding-top: 15px;
+        margin-left: 15px;
+        display: inline-block;
+        vertical-align: top; }
+        .center .content .authors .author .info .title {
+          font-size: 24px;
+          color: black; }
+        .center .content .authors .author .info .books-count {
+          color: grey; }
+      .center .content .authors .author:hover {
+        outline: 2px solid #212529;
+        border-radius: 10px;
+        background-color: #171c4b0e; }
+  .center .sidebar-authors-margin {
+    margin-top: 10px; }
+  .center .author-detail {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fefbf1; }
+    .center .author-detail .name {
+      font-size: 30px;
+      color: black;
+      margin-bottom: 10px; }
+    .center .author-detail .books-count {
+      display: block;
+      color: gray;
+      margin-bottom: 15px; }
+    .center .author-detail img {
+      width: 100px;
+      border-radius: 10px;
+      display: inline-block; }
+    .center .author-detail .info {
+      display: inline-block;
+      margin-left: 10px;
+      width: 700px;
+      vertical-align: top; }
+      .center .author-detail .info .biograpy button {
+        display: block;
+        margin-top: 10px;
+        border: none;
+        outline: none;
+        border-radius: 10px;
+        padding: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        cursor: pointer; }
+        .center .author-detail .info .biograpy button:hover {
+          outline: 1px solid #212529;
+          background-color: #171c4b0e; }
+    .center .author-detail::after {
+      display: table;
+      clear: both;
+      content: ""; }
+  .center .author-sort-genres .genres {
+    margin-top: 15px;
+    border-radius: 5px;
+    background-color: #212529;
+    display: inline-block;
+    padding: 0px; }
+    .center .author-sort-genres .genres .selected {
+      background-color: #0DB8DE;
+      border-radius: 5px;
+      color: #fefbf1; }
+    .center .author-sort-genres .genres a, .center .author-sort-genres .genres span {
+      padding: 10px;
+      color: #fefbf1;
+      font-size: 16px;
+      display: inline-block; }
+    .center .author-sort-genres .genres a:hover {
+      background-color: #0DB8DE;
+      border-radius: 5px;
+      color: #fefbf1; }
+  .center .content .collections-title {
+    margin-top: 15px;
+    border-radius: 5px;
+    background-color: #fefbf1;
+    display: inline-block;
+    padding: 10px;
+    padding-left: 70px;
+    padding-right: 70px; }
+    .center .content .collections-title h3 {
+      color: black;
+      font-size: 24px; }
+  .center .content .collections {
+    margin-top: 15px; }
+    .center .content .collections .collection {
+      background-color: #fefbf1;
+      border-radius: 5px;
+      margin-left: 15px;
+      margin-bottom: 15px;
+      display: inline-block; }
+      .center .content .collections .collection img {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        width: 285px; }
+      .center .content .collections .collection .title {
+        margin-top: 5px;
+        font-size: 18px;
+        text-align: center;
+        color: black; }
+      .center .content .collections .collection .books-count {
+        margin-bottom: 10px;
+        color: grey;
+        text-align: center; }
+      .center .content .collections .collection .hidden {
+        text-indent: -9999px;
+        white-space: nowrap; }
+      .center .content .collections .collection:hover {
+        outline: 4px solid #212529;
+        opacity: 0.9; }
+      .center .content .collections .collection:nth-child(3n-2) {
+        margin-left: 0px; }
+  .center .content .collection-detail {
+    margin-top: 15px; }
+    .center .content .collection-detail .collection-info {
+      background-color: #fefbf1;
+      border-radius: 5px;
+      display: inline-block;
+      padding: 10px;
+      padding-left: 50px;
+      padding-right: 50px; }
+      .center .content .collection-detail .collection-info .title {
+        vertical-align: middle;
+        font-size: 24px;
+        color: black; }
+      .center .content .collection-detail .collection-info .books-count {
+        color: gray; }
+    .center .content .collection-detail .subcollections .subcollection {
+      width: 190px;
+      margin-top: 15px;
+      margin-left: 15px;
+      background-color: #fefbf1;
+      padding: 10px;
+      border-radius: 5px;
+      display: inline-block; }
+      .center .content .collection-detail .subcollections .subcollection img {
+        width: 100px;
+        text-align: center;
+        display: block;
+        margin: auto; }
+      .center .content .collection-detail .subcollections .subcollection h3 {
+        margin-top: 10px;
+        text-align: center;
+        font-size: 18px;
+        color: black; }
+      .center .content .collection-detail .subcollections .subcollection .books-count {
+        color: gray;
+        text-align: center; }
+      .center .content .collection-detail .subcollections .subcollection:nth-child(4n-3) {
+        margin-left: 0px; }
+      .center .content .collection-detail .subcollections .subcollection:hover {
+        outline: 3px solid #212529;
+        opacity: 0.9;
+        border-radius: 10px; }
+  .center .content .subcollection-detail {
+    margin-top: 15px; }
+    .center .content .subcollection-detail .collection-info {
+      background-color: #fefbf1;
+      border-radius: 5px;
+      display: inline-block;
+      padding: 10px; }
+      .center .content .subcollection-detail .collection-info .title {
+        vertical-align: middle;
+        font-size: 24px;
+        color: black; }
+      .center .content .subcollection-detail .collection-info:hover {
+        outline: 3px solid #212529;
+        opacity: 0.9;
+        border-radius: 10px; }
+    .center .content .subcollection-detail .subcollection {
+      background-color: #fefbf1;
+      border-radius: 5px;
+      padding: 10px;
+      margin-top: 15px; }
+      .center .content .subcollection-detail .subcollection img {
+        width: 70px;
+        display: inline-block;
+        border-radius: 5px; }
+      .center .content .subcollection-detail .subcollection .subcollection-info {
+        display: inline-block;
+        max-width: 780px;
+        margin-left: 10px; }
+        .center .content .subcollection-detail .subcollection .subcollection-info h3 {
+          font-size: 22px; }
+        .center .content .subcollection-detail .subcollection .subcollection-info .description {
+          color: gray; }
+        .center .content .subcollection-detail .subcollection .subcollection-info .books-count {
+          color: gray; }
+  .center .profile {
+    margin-top: 15px; }
+    .center .profile .user-menu-zone {
+      width: 23%;
+      float: left; }
+      .center .profile .user-menu-zone .title-zone {
+        background-color: #212529;
+        border-radius: 5px;
+        padding: 10px;
+        height: 200px; }
+        .center .profile .user-menu-zone .title-zone img {
+          width: 130px;
+          border-radius: 50%;
+          display: block;
+          margin-left: auto;
+          margin-right: auto; }
+        .center .profile .user-menu-zone .title-zone p, .center .profile .user-menu-zone .title-zone a {
+          margin-top: 10px;
+          font-size: 18px;
+          display: block;
+          text-align: center; }
+        .center .profile .user-menu-zone .title-zone .name {
+          font-size: 24px;
+          color: #fefbf1; }
+        .center .profile .user-menu-zone .title-zone .name:hover {
+          color: #0DB8DE; }
+        .center .profile .user-menu-zone .title-zone .online {
+          color: green;
+          position: relative;
+          padding-left: 5px;
+          margin-top: 5px; }
+          .center .profile .user-menu-zone .title-zone .online::before {
+            position: absolute;
+            left: 53px;
+            top: 7px;
+            content: '';
+            display: block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: green; }
+      .center .profile .user-menu-zone .menu-zone a {
+        display: block;
+        text-align: center;
+        border: 2px solid #0DB8DE;
+        border-radius: 5px;
+        padding: 5px;
+        margin-top: 10px;
+        color: #0DB8DE;
+        font-size: 18px; }
+      .center .profile .user-menu-zone .menu-zone a:hover {
+        color: #fefbf1;
+        background-color: #0DB8DE; }
+      .center .profile .user-menu-zone .menu-zone .selected {
+        color: #fefbf1;
+        background-color: #0DB8DE; }
+    .center .profile .user-info-zone {
+      background-color: #212529;
+      border-radius: 5px;
+      box-sizing: border-box;
+      float: left;
+      margin-left: 15px;
+      padding: 15px;
+      padding-left: 25px;
+      padding-right: 25px;
+      width: 75%; }
+      .center .profile .user-info-zone h3 {
+        font-size: 32px;
+        color: #fefbf1; }
+      .center .profile .user-info-zone p {
+        color: #fefbf1;
+        margin-top: 15px; }
+  .center .books.books-favourites .book {
+    margin-top: 15px;
+    padding: 0;
+    background-color: #212529;
+    border-radius: 5px; }
+    .center .books.books-favourites .book::after {
+      content: "";
+      display: table;
+      clear: both; }
+    .center .books.books-favourites .book .image {
+      display: inline-block; }
+      .center .books.books-favourites .book .image:hover {
+        opacity: 0.7; }
+    .center .books.books-favourites .book img {
+      width: 120px;
+      border-radius: 5px; }
+    .center .books.books-favourites .book .info {
+      width: 490px;
+      float: right; }
+      .center .books.books-favourites .book .info .title {
+        display: block;
+        font-size: 24px;
+        margin-bottom: 5px !important;
+        color: #fefbf1; }
+        .center .books.books-favourites .book .info .title:hover {
+          opacity: 0.7; }
+      .center .books.books-favourites .book .info p {
+        margin-top: 0;
+        margin-bottom: 5px !important;
+        color: #fefbf1; }
+      .center .books.books-favourites .book .info a {
+        color: #0DB8DE; }
+      .center .books.books-favourites .book .info .genres-book .comma:last-child {
+        display: none; }
+    .center .books.books-favourites .book .buy .price {
+      color: #fefbf1; }
+    .center .books.books-favourites .book .buy .old-price {
+      color: #707070; }
+    .center .books.books-favourites .book::after {
+      border-bottom: 2px solid #fefbf1;
+      display: block;
+      content: ''; }
+    .center .books.books-favourites .book:last-child::after {
+      display: none; }
+  .center .cart-user .positions .recover {
+    cursor: pointer;
+    display: inline-block; }
+    .center .cart-user .positions .recover p {
+      display: inline-block;
+      color: #0DB8DE;
+      font-size: 16px; }
+      .center .cart-user .positions .recover p:hover {
+        opacity: 0.8; }
+  .center .cart-user .positions .position {
+    position: relative;
+    margin-top: 15px; }
+    .center .cart-user .positions .position input[type=checkbox] {
+      position: absolute;
+      top: 5px;
+      left: 0px;
+      width: 20px;
+      height: 20px;
+      border-radius: 5px; }
+    .center .cart-user .positions .position .book {
+      margin-left: 30px; }
+      .center .cart-user .positions .position .book .image {
+        float: left; }
+        .center .cart-user .positions .position .book .image img {
+          width: 70px;
+          border-radius: 5px; }
+        .center .cart-user .positions .position .book .image:hover {
+          opacity: 0.8; }
+      .center .cart-user .positions .position .book .info {
+        float: left;
+        width: 500px;
+        margin-left: 15px; }
+        .center .cart-user .positions .position .book .info .title {
+          color: #fefbf1;
+          font-size: 24px; }
+          .center .cart-user .positions .position .book .info .title:hover {
+            opacity: 0.8; }
+        .center .cart-user .positions .position .book .info p {
+          font-size: 14px;
+          margin-top: 5px;
+          margin-bottom: 0px !important; }
+        .center .cart-user .positions .position .book .info a {
+          color: #0DB8DE; }
+        .center .cart-user .positions .position .book .info .genres-book {
+          margin-bottom: 10px; }
+        .center .cart-user .positions .position .book .info .genres-book .comma:last-child {
+          display: none; }
+        .center .cart-user .positions .position .book .info .count-zone {
+          position: relative;
+          display: flex;
+          flex-wrap: wrap;
+          margin-top: 15px; }
+          .center .cart-user .positions .position .book .info .count-zone .count-btn {
+            display: inline-block;
+            box-sizing: border-box;
+            height: 30px;
+            width: 30px;
+            border: none;
+            text-align: center;
+            background-color: #212529;
+            color: #0DB8DE;
+            vertical-align: middle;
+            outline: 2px solid #0DB8DE;
+            line-height: 30px;
+            font-size: 18px;
+            margin-left: -2px;
+            user-select: none; }
+            .center .cart-user .positions .position .book .info .count-zone .count-btn:first-child {
+              margin-left: 0; }
+          .center .cart-user .positions .position .book .info .count-zone .count-less,
+          .center .cart-user .positions .position .book .info .count-zone .count-more {
+            cursor: pointer; }
+            .center .cart-user .positions .position .book .info .count-zone .count-less:hover,
+            .center .cart-user .positions .position .book .info .count-zone .count-more:hover {
+              background-color: #0DB8DE;
+              color: #fefbf1; }
+          .center .cart-user .positions .position .book .info .count-zone .price {
+            margin-left: 20px;
+            color: #fefbf1;
+            display: inline-block;
+            font-size: 14px;
+            padding-top: 10px; }
+            .center .cart-user .positions .position .book .info .count-zone .price span {
+              vertical-align: middle; }
+            .center .cart-user .positions .position .book .info .count-zone .price .price-rub {
+              font-size: 18px; }
+              .center .cart-user .positions .position .book .info .count-zone .price .price-rub::after {
+                content: "\20BD"; }
+          .center .cart-user .positions .position .book .info .count-zone .delite-btn {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            cursor: pointer;
+            padding: 5px;
+            padding-left: 20px;
+            padding-right: 20px;
+            color: #0DB8DE;
+            border: 2px solid #0DB8DE;
+            border-radius: 5px; }
+            .center .cart-user .positions .position .book .info .count-zone .delite-btn:hover {
+              background-color: #0DB8DE;
+              color: #fefbf1; }
+      .center .cart-user .positions .position .book::after {
+        content: "";
+        display: table;
+        clear: both; }
+    .center .cart-user .positions .position::after {
+      padding-top: 10px;
+      border-bottom: 2px solid #fefbf1;
+      display: block;
+      content: ''; }
+    .center .cart-user .positions .position:last-child::after {
+      display: none; }
+  .center .cart-user .positions .btn {
+    display: inline-block;
+    background-color: #212529;
+    margin-top: 20px;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 5px;
+    border: 2px solid #0DB8DE;
+    color: #0DB8DE;
+    font-size: 18px; }
+    .center .cart-user .positions .btn:hover {
+      background-color: #0DB8DE;
+      color: #fefbf1; }
+  .center .cart-user .positions .total-price {
+    color: #fefbf1;
+    font-size: 18px;
+    margin-left: 20px; }
+    .center .cart-user .positions .total-price::after {
+      content: "\20BD"; }
+  .center .make-order-zone .positions .position {
+    position: relative;
+    margin-top: 15px; }
+    .center .make-order-zone .positions .position .book .image {
+      float: left; }
+      .center .make-order-zone .positions .position .book .image img {
+        width: 70px;
+        border-radius: 5px; }
+      .center .make-order-zone .positions .position .book .image:hover {
+        opacity: 0.8; }
+    .center .make-order-zone .positions .position .book .info {
+      float: left;
+      width: 530px;
+      margin-left: 15px; }
+      .center .make-order-zone .positions .position .book .info .title {
+        color: #fefbf1;
+        font-size: 24px; }
+        .center .make-order-zone .positions .position .book .info .title:hover {
+          opacity: 0.8; }
+      .center .make-order-zone .positions .position .book .info p {
+        font-size: 14px;
+        margin-top: 5px;
+        margin-bottom: 0px !important; }
+      .center .make-order-zone .positions .position .book .info a {
+        color: #0DB8DE; }
+      .center .make-order-zone .positions .position .book .info .genres-book {
+        margin-bottom: 10px; }
+      .center .make-order-zone .positions .position .book .info .genres-book .comma:last-child {
+        display: none; }
+      .center .make-order-zone .positions .position .book .info .count-zone {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 15px; }
+        .center .make-order-zone .positions .position .book .info .count-zone .price {
+          color: #fefbf1;
+          display: inline-block;
+          font-size: 14px; }
+          .center .make-order-zone .positions .position .book .info .count-zone .price span {
+            vertical-align: middle; }
+          .center .make-order-zone .positions .position .book .info .count-zone .price .price-rub {
+            font-size: 18px; }
+            .center .make-order-zone .positions .position .book .info .count-zone .price .price-rub::after {
+              content: "\20BD"; }
+    .center .make-order-zone .positions .position .book::after {
+      content: "";
+      display: table;
+      clear: both; }
+    .center .make-order-zone .positions .position::after {
+      padding-top: 10px;
+      border-bottom: 2px solid #fefbf1;
+      display: block;
+      content: ''; }
+    .center .make-order-zone .positions .position:last-child::after {
+      display: none; }
+  .center .make-order-zone .positions form {
+    display: inline-block; }
+    .center .make-order-zone .positions form label {
+      display: block;
+      color: #fefbf1;
+      font-size: 18px;
+      margin-top: 15px; }
+    .center .make-order-zone .positions form .comment {
+      box-sizing: border-box;
+      width: 100%;
+      margin-top: 10px;
+      padding: 5px;
+      padding-left: 10px;
+      padding-right: 10px;
+      border-radius: 5px;
+      font-size: 14px;
+      outline: none;
+      border: 1px solid #0DB8DE;
+      background-color: #212529;
+      color: #fefbf1;
+      resize: none;
+      height: 70px; }
+  .center .make-order-zone .positions .btn {
+    cursor: pointer;
+    display: inline-block;
+    background-color: #212529;
+    margin-top: 20px;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 5px;
+    border: 2px solid #0DB8DE;
+    color: #0DB8DE;
+    font-size: 18px; }
+    .center .make-order-zone .positions .btn.btn-back {
+      float: right; }
+    .center .make-order-zone .positions .btn:hover {
+      background-color: #0DB8DE;
+      color: #fefbf1; }
+  .center .make-order-zone .positions .total-price {
+    color: #fefbf1;
+    font-size: 18px;
+    margin-left: 20px; }
+    .center .make-order-zone .positions .total-price::after {
+      content: "\20BD"; }
+  .center .orders-zone .order-filter {
+    margin-top: 15px; }
+    .center .orders-zone .order-filter ul {
+      list-style: none; }
+      .center .orders-zone .order-filter ul li {
+        display: inline-block;
+        margin-left: 5px; }
+        .center .orders-zone .order-filter ul li a {
+          display: inline-block;
+          border: 2px solid #0DB8DE;
+          padding: 5px;
+          padding-left: 10px;
+          padding-right: 10px;
+          border-radius: 5px;
+          color: #0DB8DE; }
+          .center .orders-zone .order-filter ul li a:hover {
+            background-color: #0DB8DE;
+            color: #fefbf1; }
+        .center .orders-zone .order-filter ul li:first-child {
+          margin-left: 0; }
+  .center .orders-zone .orders .order {
+    display: block;
+    margin-top: 15px;
+    border: 2px solid #0DB8DE;
+    border-radius: 5px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px; }
+    .center .orders-zone .orders .order:hover {
+      background-color: rgba(13, 184, 222, 0.15); }
+    .center .orders-zone .orders .order .order-header {
+      color: #fefbf1; }
+      .center .orders-zone .orders .order .order-header h5 {
+        font-size: 22px;
+        display: inline-block; }
+      .center .orders-zone .orders .order .order-header .status {
+        font-size: 18px;
+        display: inline;
+        float: right; }
+        .center .orders-zone .orders .order .order-header .status span {
+          color: #00bb00; }
+      .center .orders-zone .orders .order .order-header .price::after {
+        content: "\20BD"; }
+      .center .orders-zone .orders .order .order-header p {
+        margin-top: 0; }
+  .center .orders-zone .pagination {
+    margin-bottom: 10px; }
+  .center .order-zone .order {
+    display: block;
+    margin-top: 15px;
+    font-size: 18px; }
+    .center .order-zone .order .order-header {
+      color: #fefbf1; }
+      .center .order-zone .order .order-header .status {
+        font-size: 18px;
+        display: inline;
+        float: right; }
+        .center .order-zone .order .order-header .status span {
+          color: #00bb00; }
+      .center .order-zone .order .order-header .price::after {
+        content: "\20BD"; }
+      .center .order-zone .order .order-header p {
+        margin-top: 0;
+        margin-bottom: 5px; }
+    .center .order-zone .order .positions .position {
+      position: relative;
+      margin-top: 15px; }
+      .center .order-zone .order .positions .position .book .image {
+        float: left; }
+        .center .order-zone .order .positions .position .book .image img {
+          width: 70px;
+          border-radius: 5px; }
+        .center .order-zone .order .positions .position .book .image:hover {
+          opacity: 0.8; }
+      .center .order-zone .order .positions .position .book .info {
+        float: left;
+        width: 540px;
+        margin-left: 15px; }
+        .center .order-zone .order .positions .position .book .info .title {
+          color: #fefbf1;
+          font-size: 24px; }
+          .center .order-zone .order .positions .position .book .info .title:hover {
+            opacity: 0.8; }
+        .center .order-zone .order .positions .position .book .info p {
+          font-size: 14px;
+          margin-top: 5px;
+          margin-bottom: 0px !important; }
+        .center .order-zone .order .positions .position .book .info a {
+          color: #0DB8DE; }
+        .center .order-zone .order .positions .position .book .info .genres-book {
+          margin-bottom: 10px; }
+        .center .order-zone .order .positions .position .book .info .genres-book .comma:last-child {
+          display: none; }
+        .center .order-zone .order .positions .position .book .info .count-zone {
+          position: relative;
+          display: block;
+          flex-wrap: wrap;
+          margin-top: 15px; }
+          .center .order-zone .order .positions .position .book .info .count-zone .price {
+            color: #fefbf1;
+            display: block;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box; }
+            .center .order-zone .order .positions .position .book .info .count-zone .price .price-rub {
+              font-size: 18px; }
+              .center .order-zone .order .positions .position .book .info .count-zone .price .price-rub::after {
+                content: "\20BD"; }
+            .center .order-zone .order .positions .position .book .info .count-zone .price .purchase_price {
+              float: right;
+              color: #979797;
+              font-size: 16px; }
+              .center .order-zone .order .positions .position .book .info .count-zone .price .purchase_price span::after {
+                content: "\20BD"; }
+      .center .order-zone .order .positions .position .book::after {
+        content: "";
+        display: table;
+        clear: both; }
+      .center .order-zone .order .positions .position::after {
+        padding-top: 10px;
+        border-bottom: 2px solid #fefbf1;
+        display: block;
+        content: ''; }
+      .center .order-zone .order .positions .position:last-child::after {
+        display: none; }
+  .center .order-zone .pagination {
+    margin-bottom: 10px; }
+  .center .settigs-user form .form-group {
+    margin-top: 20px; }
+    .center .settigs-user form .form-group label {
+      margin: 0;
+      margin-bottom: 5px;
+      padding: 0;
+      display: inline-block;
+      font-size: 18px;
+      color: #fefbf1; }
+    .center .settigs-user form .form-group p {
+      margin: 0;
+      padding: 0; }
+      .center .settigs-user form .form-group p input,
+      .center .settigs-user form .form-group p select,
+      .center .settigs-user form .form-group p textarea {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 5px;
+        font-size: 14px;
+        outline: none;
+        border: 1px solid #0DB8DE;
+        background-color: #212529;
+        color: #fefbf1; }
+      .center .settigs-user form .form-group p option:hover {
+        background-color: #0DB8DE; }
+      .center .settigs-user form .form-group p textarea {
+        resize: none;
+        height: 100px; }
+  .center .settigs-user form input[type=submit] {
+    margin-top: 20px;
+    color: #0DB8DE;
+    border: 2px solid #0DB8DE;
+    background-color: #212529;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 5px;
+    font-size: 18px; }
+    .center .settigs-user form input[type=submit]:hover {
+      background-color: #0DB8DE;
+      color: #fefbf1;
+      cursor: pointer; }
+
+.footer {
+  background-color: #212529;
+  height: 120px; }
+  .footer .container {
+    height: 120px;
+    position: relative; }
+  .footer .title {
+    position: absolute;
+    top: 50%;
+    margin-top: -1.0em; }
+    .footer .title .logo {
+      background: url("img/booke-img.png") no-repeat;
+      background-size: 80px;
+      width: 80px;
+      height: 80px;
+      display: block;
+      position: absolute;
+      top: -30px; }
+    .footer .title h3 {
+      color: #fefbf1;
+      font-size: 24px;
+      margin-left: 100px; }
+  .footer .rigth-side {
+    float: right;
+    height: 120px;
+    position: relative;
+    width: 320px; }
+  .footer .social {
+    position: absolute;
+    top: 50%;
+    margin-top: -1.5em;
+    left: 0; }
+    .footer .social p {
+      color: #fefbf1;
+      font-size: 18px;
+      display: inline-block;
+      margin-right: 100px; }
+    .footer .social .tg {
+      background: url("img/tg.png") no-repeat center;
+      right: 50px; }
+    .footer .social .vk {
+      background: url("img/vk.png") no-repeat center;
+      right: 0px; }
+    .footer .social .vk, .footer .social .tg {
+      position: absolute;
+      top: -8px;
+      background-color: #fefbf1;
+      border-radius: 10px;
+      padding: 5px;
+      background-size: 25px;
+      width: 25px;
+      height: 25px;
+      display: inline-block; }
+  .footer .email {
+    position: absolute;
+    top: 50%;
+    margin-top: 1.5em;
+    left: 0; }
+    .footer .email p {
+      color: #fefbf1;
+      font-size: 18px;
+      display: inline-block;
+      margin-right: 50px; }
+    .footer .email a {
+      position: absolute;
+      top: -8px;
+      right: 0;
+      background: url("img/mail.png") no-repeat center;
+      background-size: 25px;
+      background-color: #fefbf1;
+      border-radius: 10px;
+      padding: 5px;
+      width: 25px;
+      height: 25px;
+      display: inline-block; }
+
+/*# sourceMappingURL=style.css.map */

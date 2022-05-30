@@ -1,0 +1,36 @@
+<div class="book" id="{{ book.id }}">
+    <a class="image" href="{{ book.get_absolute_url }}">
+        <img src="{{ book.image.url }}" alt="обложка">
+    </a>
+    <div class="info">
+        <a class="title" href="{{ book.get_absolute_url }}">{{ book.title }}</a>
+        <p class="genres-book">Жанр: 
+            {% for genre in book.genre.all %}
+                <a href="{{ genre.get_absolute_url }}">{{ genre.title }}</a><span class="comma">, </span>
+            {% endfor %}
+        </p>
+        <p class="author">Автор: <a href="{{ book.author.get_absolute_url }}">{{ book.author }}</a></p>
+        <p class="description">{{ book.description }}</p>
+        <div class="buy">
+            {% if request.user.is_authenticated %}
+                <a class="btn-buy btn-buy-authenticated" id="{{ book.id }}" onclick="add_remove_book_cart(this)"><span>Купить</span></a>
+                <input type="text" value="{% url 'cart' %}" style="display: none;">
+            {% else %}
+                <a href="{% url 'login' %}?next={{ request.path }}" class="btn-buy" name="next"><span>Купить</span></a> 
+            {% endif %}
+            <span class="price">{{ book.price }}</span>
+            {% if book.old_price %}
+            <span class="old-price">{{ book.old_price }}</span>
+            {% endif %}
+
+            <div class="favourites">
+                {% if request.user.is_authenticated %}
+                    <span class="btn" id="{{ book.id }}" onclick="add_remove_book_favourites(this);">В избранное</span>
+                {% else %}
+                    <a href="{% url 'login' %}?next={{ request.path }}" class="btn" name="next">В избранное</a>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+</div>

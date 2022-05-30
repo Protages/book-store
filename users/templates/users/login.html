@@ -1,0 +1,91 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Войти на сайт</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    
+    <link rel="stylesheet" href="{% static 'users/css/style.css' %}">
+</head>
+<body>
+    <div class="logo">
+        <a href="{% url 'main-page' %}">Booke Store
+            <!-- <img src="{% static 'store/img/booke-img.png' %}" alt="Booke Store"> -->
+        </a>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-2"></div>
+            <div class="col-lg-6 col-md-8 login-box">
+                <div class="col-lg-12 login-key">
+                    <i class="fa fa-key" aria-hidden="true"></i>
+                </div>
+                
+                <div class="col-lg-12 login-title">
+                    {% block title %}
+                    ВОЙТИ
+                    {% endblock %}
+                </div>
+
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+                <div class="col-lg-12 login-form">
+                    <div class="col-lg-12 login-form">
+                        <form method="POST">{% csrf_token %}
+
+                            <input type="text" value="{{ next_url }}" name="next" style="display: none;">
+
+                            {% for field in form %}
+                            <div class="form-group">
+                                <label class="form-control-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                <p>{{ field }}</p>
+                            </div>
+                            {% endfor %}
+                            
+                            {% block buttom %}
+                            <div class="col-lg-12 loginbttm">
+                                <div class="col-lg-6 login-btm login-button">
+                                    <button type="submit" class="btn btn-outline-primary">ВОЙТИ</button>
+                                    <a href="#" class="reset-password">Забыли пароль?</a>
+                                </div>
+                                <div class="col-lg-6 login-btm login-text">
+                                    <a href="{% url 'registration' %}?next={{ next_url }}" class="btn btn-outline-primary" name="next">
+                                        Регистрация
+                                    </a>
+                                </div>
+                            </div>
+                            {% endblock %}
+                            
+                            <div class="requered col-lg-12">
+                                <p>* - необходимы к заполнению.</p>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-2"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'users/js/scripts.js' %}"></script>
+</body>
+</html>

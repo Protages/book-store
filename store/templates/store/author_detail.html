@@ -1,0 +1,57 @@
+{% extends 'store/base.html' %}
+{% load sort %}
+
+
+{% block content %}
+
+    <div class="author-detail">
+        <h3 class="name">{{ author.name }}</h3>
+        <img src="{{ author.image.url }}" alt="{{ author.name }}">
+        <div class="info">
+            <p class="centry"><span class="type">Век:</span> {{ author.centry_of_life }}</p>
+            <p class="country"><span class="type">Страна:</span> {{ author.country }}</p>
+            <span  class="biograpy"><span class="type">Биография:</span> 
+                <span id="short">
+                    {{ author.biograpy|truncatechars:150 }}
+                </span>
+                <span id="full" style="display: none;" class="spoiler">
+                    {{ author.biograpy }}
+                </span>
+                <button onclick="toggle_show('short'), toggle_show('full')" class="read-more">Читать далее...</button>
+            </span>
+                
+            <script type="text/javascript">
+                function toggle_show(id) {
+                    var element = document.getElementsByClassName('read-more')[0]
+                    document.getElementById(id).style.display = document.getElementById(id).style.display == 'none' ? 'inline' : 'none';
+                    if(document.getElementById(id).style.display == 'none') {
+                        element.innerHTML = 'Читать далее...'
+                    }
+                    else {
+                        element.innerHTML = 'Скрыть биографию'
+                    }
+                }
+            </script>
+        </div>
+
+        
+    </div>
+
+    <div class="author-sort-genres">
+        {% author_genre_sort_tag genres author genre_selected %}
+    </div>
+
+    <div class="books">
+        {% for book in books %}
+            {% include 'store/book.html' with book=book %}
+        {% endfor %}
+    </div>
+
+    {% include 'store/paginator.html' %}
+    
+{% endblock %}
+
+
+{% block sidebar %}
+
+{% endblock %}

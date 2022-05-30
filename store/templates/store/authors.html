@@ -1,0 +1,37 @@
+{% extends 'store/base.html' %}
+{% load sidebar %}
+
+
+{% block content %}
+    <div class="authors-title">
+        <h3>Авторы</h3>
+    </div>
+
+    <div class="authors">
+        <div class="search">
+            <form method="get" action="{% url 'authors-page' %}">
+                <input type="search" placeholder="Поиск автора..." name="q" value="{{ query }}">
+            </form>
+        </div>
+        {% for author in authors %}
+            <a class="author" href="{{ author.get_absolute_url }}">
+                <img src="{{ author.image.url }}" alt="{{ author.name }}">
+                <div class="info">
+                    <h4 class="title">{{ author.name }}</h4>
+                    <span class="books-count">{{ author.books_count }} книг</span>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+
+    {% include 'store/paginator.html' %}
+
+{% endblock %}
+
+
+{% block sidebar %}
+    <div class="sidebar-authors-margin"></div>
+
+    {% sidebar_genres_tag %}
+
+{% endblock %}

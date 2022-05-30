@@ -1,0 +1,39 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="collections-title">
+        <h3>Подборки</h3>
+    </div>
+
+    <div class="collections">
+
+        <a class="collection" href="{% url 'ageread-collection' %}">
+            <img src="{% static 'store/img/ages_collection.jpg' %}" alt="По возрастам">
+            <h3 class="title">По возрастам</h3>
+            <p class="books-count hidden">-- книг</p>
+        </a>
+
+        <a class="collection" href="{% url 'location-collection' %}">
+            <img src="{% static 'store/img/location_collection.jpg' %}" alt="Место действия">
+            <h3 class="title">Место действия</h3>
+            <p class="books-count hidden">-- книг</p>
+        </a>
+
+        {% for collection in collections %}
+            <a class="collection" href="{{ collection.get_absolute_url }}">
+                <img src="{{ collection.image.url }}" alt="{{ collection.title }}">
+                <h3 class="title">{{ collection.title }}</h3>
+                <p class="books-count">{{ collection.book_set.all.count }} книг</p>
+            </a>
+        {% endfor %}
+    </div>
+
+    {% include 'store/paginator.html' %}
+{% endblock %}
+
+
+{% block sidebar %}
+
+{% endblock %}

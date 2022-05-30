@@ -1,0 +1,43 @@
+{% extends 'store/base.html' %}
+
+
+{% block content %}
+    <div class="profile">
+        <div class="user-menu-zone">
+
+            <div class="title-zone">
+                <img src="{{ user.image.url }}" alt="{{ user }}">
+                <a class="name" href="{% url 'profile' %}">{{ user }}</a>
+                <p class="online">online</p>
+            </div>
+
+            <div class="menu-zone">
+                {% for menu_item in user_menu %}
+                    {% if menu_item.url_name == user_menu_selected %}
+                        <a class="menu-item selected" href="{% url menu_item.url_name %}">{{ menu_item.title }}</a>
+                    {% else %}
+                        <a class="menu-item" href="{% url menu_item.url_name %}">{{ menu_item.title }}</a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            
+        </div>
+
+        {% block user_content %}
+            <div class="user-info-zone main-profile">
+
+                <h3>Контактная информация</h3>
+                <p class="email">Электронная почта:<br>{{ user.email }}</p>
+                <p class="phone">Телефон:<br>+8 213 429 1232</p>
+                <p class="about">О себе:<br>{{ user.about }}</p>
+                
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}
+
+
+
+{% block sidebar %}
+
+{% endblock %}

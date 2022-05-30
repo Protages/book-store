@@ -1,0 +1,38 @@
+{% extends 'customer/profile.html' %}
+
+
+{% block user_content %}
+<div class="user-info-zone orders-zone">
+    <h3>Заказы</h3>
+
+    <div class="order-filter">
+        <ul>
+            <li><a href="{% url 'orders' %}?q=in_processing" class="in_processing" name="q" value="in_processing">В обработке</a></li>
+            <li><a href="{% url 'orders' %}?q=sent" class="sent" name="q" value="sent">Отправлен</a></li>
+            <li><a href="{% url 'orders' %}?q=wait" class="wait" name="q" value="wait">Ожидает</a></li>
+            <li><a href="{% url 'orders' %}?q=completed" class="completed" name="q" value="completed">Завершен</a></li>
+            <li><a href="{% url 'orders' %}?q=cancel" class="cancel" name="q" value="cancel">Отменен</a></li>
+        </ul>
+
+    </div>
+
+    <div class="orders">
+    {% for order in orders %}
+
+        <a href="{{ order.get_absolute_url }}" class="order">
+            <div class="order-header">
+                <h5>Заказ №{{ order.id }}</h5>
+                <p class="status">Статус: <span>{{ order.get_status_display }}</span></p>
+                <p class="date">Дата заказа: {{ order.date }}</p>
+                <p class="price">Сумма заказа: <span>{{ order.total_price }}</span></p>                
+            </div>
+        </a>
+
+    {% endfor %}
+    </div>
+
+    {% include 'store/paginator.html' %}
+    
+</div>
+    
+{% endblock %}

@@ -1,0 +1,62 @@
+// $header_heigth:80px;
+// $center_min_heigth:900px;
+// $footer_height:120px;
+
+// $header_footer_color:#171C4B;
+// $center_color:#8F5DF9;
+// $ligth_color:#fefbf1;
+
+
+@import "static-variables.scss";
+
+.pagination {
+    margin: 20px;
+    text-align: center;
+    .list-pages {
+        position: relative;
+        background-color: $ligth_color;
+        color: black;
+        box-sizing: border-box;
+        font-size: 18px;
+        height: 40px;
+        text-align: center;
+        padding: 10px;
+        padding-left: 10px;
+        padding-right: 15px;
+        border-radius: 5px;
+        .current{
+            font-size: 22px;
+        }
+        .btn {
+            display: block;
+            background-color: $ligth_color;
+            border-radius: 5px;
+            width: 40px;
+            height: 40px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 20px;
+            margin: 15px;
+            position: absolute;
+            top: -14px;
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+        .previous {
+            background-image: url("img/previous.png");
+            left: -70px;
+        }
+        .next {
+            background-image: url("img/next.png");
+            right: -70px;
+        }
+        a {
+            margin-left: 5px;
+            color: black;
+        }
+        span {
+            margin-left: 5px;
+        }
+    }
+}

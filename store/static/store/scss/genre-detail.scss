@@ -1,0 +1,55 @@
+// $header_heigth:80px;
+// $center_min_heigth:900px;
+// $footer_height:120px;
+
+// $header_footer_color:#171C4B;
+// $center_color:#8F5DF9;
+// $ligth_color:#fefbf1;
+
+@import "static-variables.scss";
+
+.genre-detail {
+    .title {
+        background-color: $ligth_color;
+        display: inline-block;
+        border-radius: 5px;
+        margin-top: 15px;
+        padding: 5px;
+        padding-bottom: 10px;
+        padding-left: 75px;
+        padding-right: 40px;
+        position: relative;
+        img {
+            display: inline-block;
+            position: absolute;
+            top: 5px;
+            left: 0px;
+            width: 50px;
+            margin-left: 15px;
+        }
+        h2 {
+            font-size: 24px;
+            color: black;
+        }
+        .books-count {
+            color: grey;
+        }
+    }
+    .sort {
+        margin-top: 15px;
+        border-radius: 5px;
+        background-color: $header_footer_color;
+        display: inline-block;
+        a {
+            padding: 10px;
+            color: $ligth_color;
+            font-size: 16px;
+            display: inline-block;
+        }
+        a:hover {
+            background-color: #171C4B;
+            border-radius: 5px;
+            color: $ligth_color;
+        }
+    }
+}

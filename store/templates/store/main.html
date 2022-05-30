@@ -1,0 +1,24 @@
+{% extends 'store/base.html' %}
+{% load sidebar %}
+{% load sort %}
+
+
+{% block content %}
+    {% sort_tag sort_selected %}
+
+    <div class="books">
+        {% for book in books %}
+            {% include 'store/book.html' with book=book %}
+        {% endfor %}
+    </div>
+
+    {% include 'store/paginator.html' %}
+
+{% endblock %}
+
+
+{% block sidebar %}
+
+    {% sidebar_genres_tag %}
+
+{% endblock %}

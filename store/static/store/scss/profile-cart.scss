@@ -1,0 +1,181 @@
+@import "static-variables.scss";
+
+
+.cart-user {
+    .positions {
+        .recover {
+            cursor: pointer;
+            display: inline-block;
+            p {
+                display: inline-block;
+                color: $selected_color;
+                font-size: 16px;
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+        }
+        .position {
+            position: relative;
+            // border: 1px solid red;
+            margin-top: 15px;
+
+            input[type=checkbox] {
+                position: absolute;
+                top: 5px;
+                left: 0px;
+                width: 20px;
+                height: 20px;
+                border-radius: 5px;
+            }
+
+            .book {
+                margin-left: 30px;
+                .image {
+                    float: left;
+                    img {
+                        width: 70px;
+                        border-radius: 5px;
+                    }
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
+                .info {
+                    float: left;
+                    width: 500px;
+                    margin-left: 15px;
+                    .title {
+                        color: $ligth_color;
+                        font-size: 24px;
+                        &:hover {
+                            opacity: 0.8;
+                        }
+                    }
+                    p {
+                        font-size: 14px;
+                        margin-top: 5px;
+                        margin-bottom: 0px !important;
+                    }
+                    a {
+                        color: $selected_color;
+                    }
+                    .genres-book {
+                        margin-bottom: 10px;
+                    }
+                    .genres-book .comma:last-child {
+                        display: none;
+                    }
+                    .count-zone {
+                        position: relative;
+                        display: flex;
+                        flex-wrap: wrap;
+                        margin-top: 15px;
+                        .count-btn {
+                            display: inline-block;
+                            box-sizing: border-box;
+                            height: 30px;
+                            width: 30px;
+                            border: none;
+                            text-align: center;
+                            background-color: $header_footer_color;
+                            color: $selected_color;
+                            vertical-align: middle;
+                            outline: 2px solid $selected_color;;
+                            line-height: 30px;
+                            font-size: 18px;
+                            margin-left: -2px;
+                            user-select: none;
+                            &:first-child {
+                                margin-left: 0;
+                            }
+                        }
+                        .count-less, 
+                        .count-more {
+                            cursor: pointer;
+                            &:hover {
+                                background-color: $selected_color;
+                                color: $ligth_color;
+                            }
+                        }
+
+                        .price {
+                            margin-left: 20px;
+                            color: $ligth_color;
+                            display: inline-block;
+                            font-size: 14px;
+                            padding-top: 10px;
+                            span {
+                                vertical-align: middle;
+                            }
+                            .price-rub {
+                                font-size: 18px;
+                                &::after {
+                                    content: "\20BD";
+                                }
+                            }
+                        }
+
+                        .delite-btn {
+                            position: absolute;
+                            right: 0;
+                            bottom: 0;
+                            cursor: pointer;
+                            padding: 5px;
+                            padding-left: 20px;
+                            padding-right: 20px;
+                            color: $selected_color;
+                            border: 2px solid $selected_color;
+                            border-radius: 5px;
+                            &:hover {
+                                background-color: $selected_color;
+                                color: $ligth_color;
+                            }
+                        }
+                    }
+                }
+                &::after {
+                    content: "";
+                    display: table;
+                    clear: both;
+                }
+            }
+
+            &::after {
+                padding-top: 10px;
+                border-bottom: 2px solid $ligth_color;
+                display: block;
+                content: '';
+            }
+            &:last-child::after {
+                display: none;
+            }
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: $header_footer_color;
+            margin-top: 20px;
+            padding: 5px;
+            padding-left: 20px;
+            padding-right: 20px;
+            border-radius: 5px;
+            border: 2px solid $selected_color;
+            color: $selected_color;
+            font-size: 18px;
+
+            &:hover {
+                background-color: $selected_color;
+                color: $ligth_color;
+            }
+        }
+        .total-price {
+            color: $ligth_color;
+            font-size: 18px;
+            margin-left: 20px;
+            &::after {
+                content: "\20BD";
+            }
+        }
+    }
+}

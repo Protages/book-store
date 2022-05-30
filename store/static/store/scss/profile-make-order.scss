@@ -1,0 +1,139 @@
+@import "static-variables.scss";
+
+.make-order-zone {
+    .positions {
+        .position {
+            position: relative;
+            // border: 1px solid red;
+            margin-top: 15px;
+            .book {
+                .image {
+                    float: left;
+                    img {
+                        width: 70px;
+                        border-radius: 5px;
+                    }
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
+                .info {
+                    float: left;
+                    width: 530px;
+                    margin-left: 15px;
+                    .title {
+                        color: $ligth_color;
+                        font-size: 24px;
+                        &:hover {
+                            opacity: 0.8;
+                        }
+                    }
+                    p {
+                        font-size: 14px;
+                        margin-top: 5px;
+                        margin-bottom: 0px !important;
+                    }
+                    a {
+                        color: $selected_color;
+                    }
+                    .genres-book {
+                        margin-bottom: 10px;
+                    }
+                    .genres-book .comma:last-child {
+                        display: none;
+                    }
+                    .count-zone {
+                        position: relative;
+                        display: flex;
+                        flex-wrap: wrap;
+                        margin-top: 15px;
+
+                        .price {
+                            color: $ligth_color;
+                            display: inline-block;
+                            font-size: 14px;
+                            span {
+                                vertical-align: middle;
+                            }
+                            .price-rub {
+                                font-size: 18px;
+                                &::after {
+                                    content: "\20BD";
+                                }
+                            }
+                        }
+                    }
+                }
+                &::after {
+                    content: "";
+                    display: table;
+                    clear: both;
+                }
+            }
+
+            &::after {
+                padding-top: 10px;
+                border-bottom: 2px solid $ligth_color;
+                display: block;
+                content: '';
+            }
+            &:last-child::after {
+                display: none;
+            }
+        }
+        form {
+            display: inline-block;
+            label {
+                display: block;
+                color: $ligth_color;
+                font-size: 18px;
+                margin-top: 15px;
+            }
+            .comment {
+                box-sizing: border-box;
+                width: 100%;
+                margin-top: 10px;
+                padding: 5px;
+                padding-left: 10px;
+                padding-right: 10px;
+                border-radius: 5px;
+                font-size: 14px;
+                outline: none;
+                border: 1px solid $selected_color;
+                background-color: $header_footer_color;
+                color: $ligth_color;
+                resize: none;
+                height: 70px;
+            }
+        }
+        .btn {
+            cursor: pointer;
+            display: inline-block;
+            background-color: $header_footer_color;
+            margin-top: 20px;
+            padding: 5px;
+            padding-left: 20px;
+            padding-right: 20px;
+            border-radius: 5px;
+            border: 2px solid $selected_color;
+            color: $selected_color;
+            font-size: 18px;
+            &.btn-back {
+                float: right;
+
+            }
+            &:hover {
+                background-color: $selected_color;
+                color: $ligth_color;
+            }
+        }
+        .total-price {
+            color: $ligth_color;
+            font-size: 18px;
+            margin-left: 20px;
+            &::after {
+                content: "\20BD";
+            }
+        }
+    }
+}

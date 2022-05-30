@@ -1,0 +1,29 @@
+{% extends 'store/base.html' %}
+{% load sort %}
+
+
+{% block content %}
+    <div class="genre-detail">
+        <div class="title">
+            <img src="{{ genre.image.url }}" alt="{{ genre.title }}">
+            <h2>{{ genre.title }}</h2>
+            <span class="books-count">{{ genre.book_set.all.count }} книг</span>
+        </div><br>
+
+        {% sort_tag sort_selected %}
+    </div>
+
+    <div class="books">
+        {% for book in books %}
+            {% include 'store/book.html' with book=book %}
+        {% endfor %}
+    </div>
+
+    {% include 'store/paginator.html' %}
+    
+{% endblock %}
+
+
+{% block sidebar %}
+
+{% endblock %}

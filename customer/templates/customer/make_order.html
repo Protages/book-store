@@ -1,0 +1,74 @@
+{% extends 'customer/profile.html' %}
+
+
+{% block user_content %}
+<div class="user-info-zone make-order-zone">
+    <h3>Формирование заказа</h3>
+
+    {% if positions %}
+        <div class="positions">
+        {% for position in positions %}
+            <div class="position" id="{{ position.id }}">
+
+                <div class="book">
+                    <a class="image" href="{{ position.book.get_absolute_url }}">
+                        <img src="{{ position.book.image.url }}" alt="Обложка">
+                    </a>
+                    <div class="info">
+                        <a class="title" href="{{ position.book.get_absolute_url }}">{{ position.book.title }}</a>
+                        <!-- <p class="genres-book">Жанр: 
+                            {% for genre in position.book.genre.all %}
+                                <a href="{{ genre.get_absolute_url }}">{{ genre.title }}</a><span class="comma">, </span>
+                            {% endfor %}
+                        </p> -->
+                        <p class="author">Автор: <a href="{{ position.book.author.get_absolute_url }}">{{ position.book.author }}</a></p>
+                        <div class="count-zone">
+
+                            <div class="price">
+                                <span class="price-rub" id="price">{{ position.book.price }}</span>
+                                <span class="price-count" id="count-{{ position.count }}">за {{ position.count }}шт.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+        <script>
+            var positions = document.getElementsByClassName('position')
+            console.log(positions.length)
+            for(var i=0; i < positions.length; i++) {
+                var price_el = positions[i].getElementsByClassName('price-rub')[0]
+                var price = parseInt(price_el.textContent)
+                var count = positions[i].getElementsByClassName('price-count')[0].id.split('-')[1]
+                console.log(price, count)
+                price_el.innerHTML = (price * parseInt(count)).toString()
+            }
+        </script>
+
+            <div class="bottom-zone">
+                <form method="POST">{% csrf_token %}
+                    {% for position in positions %}
+                        <input type="text" name="position_id" value="{{ position.id }}" style="display: none;">
+                    {% endfor %}
+
+                    <label for="comment-id">Комментарии к заказу</label>
+                    <textarea name="comment" id="comment-id" cols="30" rows="10" class="comment"></textarea>
+                    
+                    <button type="submit" class="btn">Оплатить</button>
+
+                    <span class="total-price" id="total-price">Общая цена: {{ total_price }}</span>
+                    <a href="{% url 'cart' %}" class="btn btn-back">Назад в корзину</a>
+                </form>
+                
+                
+            </div>
+        
+        </div>
+
+    {% else %}
+        <p>Нет позиций для оформления заказа</p>
+    {% endif %}
+
+</div>
+{% endblock %}

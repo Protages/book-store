@@ -1,0 +1,171 @@
+// $header_heigth:80px;
+// $center_min_heigth:900px;
+// $footer_height:120px;
+
+// $header_footer_color:#171C4B;
+// $center_color:#8F5DF9;
+// $ligth_color:#fefbf1;
+
+@import "static-variables.scss";
+
+.content {
+    .sort {
+        margin-top: 15px;
+        border-radius: 5px;
+        background-color: $header_footer_color;
+        display: inline-block;
+        .selected {
+            background-color: $selected_color;
+            border-radius: 5px;
+            color: $ligth_color;
+        }
+        a, span {
+            padding: 10px;
+            color: $ligth_color;
+            font-size: 16px;
+            display: inline-block;
+        }
+        a:hover {
+            background-color: $selected_color;
+            border-radius: 5px;
+            color: $ligth_color;
+        }
+    }
+
+    .books {
+        .book {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: $ligth_color;
+            border-radius: 5px;
+            &::after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+            .image {
+                display: inline-block;
+                &:hover {
+                    opacity: 0.7;
+                }
+            }
+            img {
+                width: 150px;
+                border-radius: 5px;
+            }
+            .info {
+                width: 710px;
+                float: right;
+                .title {
+                    display: block;
+                    font-size: 28px;
+                    margin-bottom: 10px;
+                    color: black;
+                    &:hover {
+                        opacity: 0.7;
+                    }
+                }
+                p {
+                    margin-bottom: 10px;
+                }
+                .genres-book {
+                    margin-bottom: 10px;
+                }
+                .genres-book .comma:last-child {
+                    display: none;
+                }
+            }
+            .buy {
+                position: relative;
+                margin-top: 10px;
+                .btn-buy {
+                    display: inline-block;
+                    box-sizing: border-box;
+                    text-align: center;
+                    border: none;
+                    border-radius: 5px;
+                    border: 2px solid $selected_color;
+                    width: 150px;
+                    padding: 5px;
+                    padding-left: 20px;
+                    padding-right: 20px;
+                    background-color: $selected_color;
+                    color: $ligth_color;
+                    font-size: 16px;
+                    cursor: pointer;
+
+                    &.in_cart {
+                        background-color: $green_color;
+                        border-color: $green_color;
+                    }
+
+                    span::before {
+                        display: inline-block;
+                        vertical-align: top;
+                        content: "";
+                        background-image: url("img/basket-white.svg");
+                        background-repeat: no-repeat;
+                        width: 20px;
+                        height: 20px;
+                        margin-right: 7px;
+                        background-size: 20px;
+                    }
+
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
+                .price {
+                    margin-left: 15px;
+                    font-size: 18px;
+                    &::after {
+                        content: "\20BD";
+                    }
+                }
+                .old-price {
+                    margin-left: 10px; 
+                    font-size: 14px;
+                    color: #424242;
+                    text-decoration: line-through;
+                    &::after {
+                        content: "\20BD";
+                    }
+                }
+                .favourites {
+                    position: absolute;
+                    display: inline-block;
+                    right: 20px;
+                    top: 10px;
+                    .btn {
+                        padding: 5px;
+                        padding-left: 15px;
+                        padding-right: 15px;
+                        color: $selected_color;
+                        border: 2px solid $selected_color;
+                        border-radius: 5px;
+                        &:hover {
+                            background-color: $selected_color;
+                            color: $ligth_color;
+                            cursor: pointer;
+                        }
+                    }
+                    .in_favourites {
+                        background-color: $selected_color;
+                        color: $ligth_color;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+
+    // paginator styles
+    @import "pagination.scss";
+}
+
+.sidebar {
+    padding-top: 65px;
+
+    // sidebar with genres styles
+    @import "sidebar-genres.scss";    
+}

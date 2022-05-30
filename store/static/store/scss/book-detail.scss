@@ -1,0 +1,97 @@
+// $header_heigth:80px;
+// $center_min_heigth:900px;
+// $footer_height:120px;
+
+// $header_footer_color:#171C4B;
+// $center_color:#8F5DF9;
+// $ligth_color:#fefbf1;
+
+@import "static-variables.scss";
+
+.book-detail {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: $ligth_color;
+    border-radius: 5px;
+    .top {
+        .image {
+            display: inline-block;
+            img {
+                width: 300px;
+                border-radius: 5px;
+            }
+        }
+        .info {
+            vertical-align: top;
+            margin-left: 15px;
+            display: inline-block;
+            .book-title {
+                font-size: 32px;
+            }
+            p {
+                margin-top: 10px;
+                .comma:last-child {
+                    display: none;
+                }
+            }
+        }
+        &::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    }
+
+    .middle {
+        margin-top: 15px;
+        .description-title {
+            font-size: 20px;
+        }
+        hr {
+            border: none;
+            outline: 2px solid $header_footer_color;
+        }
+        .description {
+            margin-top: 15px;
+        }
+    }
+
+    .bottom {
+        .buy {
+            margin-top: 15px;
+            button {
+                border: none;
+                border-radius: 8px;
+                width: 150px;
+                padding: 10px;
+                padding-left: 45px;
+                padding-right: 20px;
+                background-color: $header_footer_color;
+                color: $ligth_color;
+                font-size: 16px;
+
+                background-image: url("img/product-card-img.png");
+                background-repeat: no-repeat;
+                background-size: 30px;
+                background-position: 27px 9px;
+            }
+            .price {
+                margin-left: 15px;
+                font-size: 18px;
+                &::after {
+                    content: "\20BD";
+                }
+            }
+            .old-price {
+                margin-left: 10px; 
+                font-size: 14px;
+                color: #424242;
+                text-decoration: line-through;
+                &::after {
+                    content: "\20BD";
+                }
+            }
+            
+        }
+    }
+}

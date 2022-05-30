@@ -1,0 +1,40 @@
+{% extends 'store/base.html' %}
+{% load sort %}
+
+
+{% block content %}
+<div class="subcollection-detail">
+    {% block title %}
+    <a class="collection-info" href="{{ collection.get_absolute_url }}">
+        <h3 class="title">Подборка: {{ collection.title }}</h3>
+    </a>
+    {% endblock %}
+
+    <div class="subcollection">
+        {% if sub_collection.image %}
+        <img src="{{ sub_collection.image.url }}" alt="{{ sub_collection.title }}">
+        {% endif %}
+        <div class="subcollection-info">
+            <h3>{{ sub_collection.title }}</h3>
+            <p class="description">{{ sub_collection.description }}</p>
+            <p class="books-count">{{ sub_collection.book_set.all.count }} книг</p>
+        </div>
+    </div>
+
+    {% sort_tag sort_selected %}
+
+    <div class="books">
+        {% for book in books %}
+            {% include 'store/book.html' %}
+        {% endfor %}
+    </div>
+</div>
+    
+    {% include 'store/paginator.html' %}
+
+{% endblock %}
+
+
+{% block sidebar %}
+
+{% endblock %}

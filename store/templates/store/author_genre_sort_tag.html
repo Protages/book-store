@@ -1,0 +1,17 @@
+<div class="genres">
+
+    {% if genre_selected != 'all' %}
+        <a href="{{ author.get_absolute_url }}">Все({{ author.book_set.all.count }})</a>
+    {% else %}
+        <span class="selected">Все({{ author.book_set.all.count }})</span>
+    {% endif %}
+
+    {% for genre in genres %}
+        {% if genre_selected != genre.slug %}
+            <a href="?genre={{ genre.slug }}" name="genre" value="{{ genre.slug }}">{{ genre.title }}({{ genre.books_count }})</a>
+        {% else %}
+            <span class="selected">{{ genre.title }}({{ genre.books_count }})</span>
+        {% endif %}
+    {% endfor %}
+
+</div>

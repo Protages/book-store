@@ -1,0 +1,104 @@
+@import "static-variables.scss";
+
+
+.profile {
+    margin-top: 15px;
+
+    .user-menu-zone {
+        width: 23%;
+        float: left;
+        
+        .title-zone {
+            background-color: $header_footer_color;
+            border-radius: 5px;
+            padding: 10px;
+            
+            height: 200px;
+
+            img {
+                width: 130px;
+                border-radius: 50%;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            p, a {
+                margin-top: 10px;
+                font-size: 18px;
+                display: block;
+                text-align: center;
+            }
+            .name {
+                font-size: 24px;
+                color: $ligth_color;
+            }
+            .name:hover {
+                color: $selected_color;
+            }
+            .online {
+                color: green;
+                position: relative;
+                padding-left: 5px;
+                margin-top: 5px;
+                &::before {
+                    position: absolute;
+                    left: 53px;
+                    top: 7px;
+                    content: '';
+                    display: block;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background-color: green;
+                }
+            }
+        }
+        
+        .menu-zone {
+            a {
+                display: block;
+                text-align: center;
+                // background-color: $ligth_color;
+                border: 2px solid $selected_color;
+                border-radius: 5px;
+                padding: 5px;
+                margin-top: 10px;
+                color: $selected_color;
+                font-size: 18px;
+            }
+            a:hover {
+                color: $ligth_color;
+                background-color: $selected_color;
+            }
+            .selected {
+                color: $ligth_color;
+                background-color: $selected_color;
+            }
+        }
+    }
+
+    .user-info-zone {
+        background-color: $header_footer_color;
+        border-radius: 5px;
+        box-sizing: border-box;
+        float: left;
+        margin-left: 15px;
+        padding: 15px;
+        padding-left: 25px;
+        padding-right: 25px;
+        width: 75%;
+        h3 {
+            font-size: 32px;
+            color: $ligth_color;
+        }
+        
+        p {
+            color: $ligth_color;
+            margin-top: 15px;
+        }
+    }
+
+    // .pagination {
+    //     margin-top: 20px;
+    // }
+}

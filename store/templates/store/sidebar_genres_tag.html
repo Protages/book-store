@@ -1,0 +1,10 @@
+<div class="genres">
+    <p class="title">Популярные жанры</p>
+    {% for genre in genres %}
+        <a class="genre" href="{{ genre.get_absolute_url }}">
+            <img src="{{ genre.image.url }}" alt="{{ genre.title }}">
+            <span class="genre-title">{{ genre.title }}</span>
+        </a>
+    {% endfor %}
+    <a class="all" href="{% url 'genres-page' %}">Все жанры ></a>
+</div>

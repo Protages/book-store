@@ -1,0 +1,89 @@
+{% extends 'customer/profile.html' %}
+
+
+{% block user_content %}
+<div class="user-info-zone cart-user">
+    <h3>Корзина</h3>
+
+    {% if positions %}
+        <div class="positions">
+        {% for position in positions %}
+
+            <div class="recover" style="display: none;" onclick="recover_position_from_cart(this)" id="recover-for-{{ position.id }}">
+                <p>Восстановить позицию по книге '{{ position.book.title }}'</p>
+            </div>
+
+            <div class="position" id="{{ position.id }}">
+                <input type="checkbox" name="book_id" class="position-checkbox" value="{{ position.book.id }}" 
+                onclick="activate_deactivate_position(this)"
+                {% if position.is_active %} 
+                    checked
+                {% endif %}>
+
+                <div class="book">
+                    <a class="image" href="{{ position.book.get_absolute_url }}">
+                        <img src="{{ position.book.image.url }}" alt="Обложка">
+                    </a>
+                    <div class="info">
+                        <a class="title" href="{{ position.book.get_absolute_url }}">{{ position.book.title }}</a>
+                        <!-- <p class="genres-book">Жанр: 
+                            {% for genre in position.book.genre.all %}
+                                <a href="{{ genre.get_absolute_url }}">{{ genre.title }}</a><span class="comma">, </span>
+                            {% endfor %}
+                        </p> -->
+                        <p class="author">Автор: <a href="{{ position.book.author.get_absolute_url }}">{{ position.book.author }}</a></p>
+                        <div class="count-zone">
+                            <div class="count">
+                                <div class="count-btn count-less" id="{{ position.id }}" onclick="minus_book_count(this)">—</div>
+                                <input type="text" name="count" 
+                                    value="{{ position.count }}" class="count-btn count-input" 
+                                    id="{{ position.id }}" readonly
+                                >
+                                <div class="count-btn count-more" id="{{ position.id }}" onclick="plus_book_count(this)">+</div>
+                            </div>
+
+                            <div class="price">
+                                <span class="price-rub" id="price">{{ position.book.price }}</span>
+                                <span class="price-count" id="price-count">за {{ position.count }}шт.</span>
+                            </div>
+
+                            <span class="delite-btn" id="{{ position.id }}" onclick="remove_position_from_cart(this)">
+                                Удалить
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+
+            <div class="bottom-zone">
+                <a href="{% url 'make_order' %}" class="btn">Оформить заказ</a>
+                <span class="total-price" id="total-price">Общая цена: ---</span>
+            </div>
+        
+        </div>
+
+        <script>
+            var positions = document.getElementsByClassName('position')
+            var total_price = 0
+            for(var i=0; i < positions.length; i++) {
+                var price_el = positions[i].getElementsByClassName('price-rub')[0]
+                var count_input_el = positions[i].getElementsByClassName('count-input')[0]
+                var price = parseInt(price_el.textContent) * parseInt(count_input_el.value)
+                price_el.innerHTML = price.toString()
+
+                var is_position_checked = positions[i].getElementsByClassName('position-checkbox')[0].checked
+                if(is_position_checked) {
+                    total_price = total_price + price
+                }
+            }
+            var total_price_el = document.getElementById('total-price')
+            total_price_el.innerHTML = `Общая цена: ${total_price}`
+        </script>
+    {% else %}
+        <p>Ваша корзина пуста</p>
+    {% endif %}
+
+</div>
+{% endblock %}

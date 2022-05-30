@@ -1,0 +1,83 @@
+// $header_footer_color:#171C4B;
+// $center_color:#8F5DF9;
+// $ligth_color:#fefbf1;
+
+
+@import "static-variables.scss";
+
+.author-detail {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: $ligth_color;
+    .name {
+        font-size: 30px;
+        color: black;
+        margin-bottom: 10px;
+    }
+    .books-count {
+        display: block;
+        color: gray;
+        margin-bottom: 15px;
+    }
+    img {
+        width: 100px;
+        border-radius: 10px;
+        display: inline-block;
+    }
+    .info {
+        display: inline-block;
+        margin-left: 10px;
+        width: 700px;
+        vertical-align: top;
+        .biograpy {
+            button {
+                display: block;
+                margin-top: 10px;
+                border: none;
+                outline: none;
+                border-radius: 10px;
+                padding: 5px;
+                padding-left: 10px;
+                padding-right: 10px;
+                cursor: pointer;
+                &:hover {
+                    outline: 1px solid $header_footer_color;
+                    background-color: #171c4b0e;
+                }
+            }
+        }
+    }
+    &::after {
+        display: table;
+        clear: both;
+        content: "";
+    }
+}
+
+.author-sort-genres {
+    .genres {
+        margin-top: 15px;
+        border-radius: 5px;
+        background-color: $header_footer_color;
+        display: inline-block;
+        padding: 0px;
+        .selected {
+            background-color: $selected_color;
+            border-radius: 5px;
+            color: $ligth_color;
+        }
+        a, span {
+            padding: 10px;
+            color: $ligth_color;
+            font-size: 16px;
+            display: inline-block;
+        }
+        a:hover {
+            background-color: $selected_color;
+            border-radius: 5px;
+            color: $ligth_color;
+        }
+        
+    }
+}

@@ -1,0 +1,20 @@
+<div class="sort">
+    {% if sort_selected == 'all' %}
+        <span class="selected">Все</span>
+    {% else %}
+        <a href="?sort=all">Все</a>
+    {% endif %}
+
+    {% if sort_selected == 'new' %}
+        <span class="selected">Новинки</span>
+    {% else %}
+        <a href="?sort=new" value="new">Новинки</a>
+    {% endif %}
+
+    {% if sort_selected == 'popular' %}
+        <span class="selected">Популярные</span>
+    {% else %}
+        <a href="?sort=popular" value="popular">Популярные</a>
+    {% endif %}
+
+</div>

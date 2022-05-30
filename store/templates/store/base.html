@@ -1,0 +1,118 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'store/style.css' %}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+
+    <title>Booke Store - главная</title>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+
+            <div class="menu">
+                <ul>
+                    <li class="logo-li">
+                        <a href="{% url 'main-page' %}"></a>
+                    </li>
+
+                    {% for item in menu %}
+                        {% if menu_selected == item.url_name %}
+                        <li> 
+                            <a href="{% url item.url_name %}" class="selected">{{ item.title }}</a>
+                        </li>
+                        {% else %}
+                        <li> 
+                            <a href="{% url item.url_name %}">{{ item.title }}</a>
+                        </li>
+                        {% endif %}
+                    {% endfor %}
+                    
+                    <li class="serch-li">
+                        <form method="get">{% csrf_token %}
+                            <input type="text" placeholder="Поиск...">
+                            <button type="submit"></button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+
+            {% if request.user.is_authenticated %}
+            <div class="login">
+                <button class="login-user open-menu"><span class="img"></span>{{ request.user }}</button>
+
+                <div class="dropdown-menu" id="dropdown-user-menu">
+                    <div class="triangle-top"></div>
+                    <ul>
+                        <li><a href="{% url 'profile' %}">Профиль</a></li>
+                        <li><a href="{% url 'favourites' %}">Избранное</a></li>
+                        <li><a href="{% url 'orders' %}">Заказы</a></li>
+                        <li><a href="{% url 'logout' %}?next={{ request.path }}" name="next">Выйти</a></li>
+                    </ul>
+                </div>
+            </div>
+            {% else %}
+            <div class="login">
+                <a href="{% url 'login' %}?next={{ request.path }}" class="login-user" name="next">
+                    <span class="img"></span>Войти
+                </a>
+            </div>
+            {% endif %}
+
+        </div>
+    </header>
+
+    <section class="center">
+        <div class="container">
+
+            <div class="column column-left content">
+                {% block content %}
+                {% endblock %}
+            </div>
+
+            <div class="column column-rigth sidebar">
+                {% block sidebar %}
+                {% endblock %}
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+
+            <div class="title">
+                <a class="logo" href="{% url 'main-page' %}"></a>
+                <h3>Booke Store</h3>
+            </div>
+
+            <div class="rigth-side">
+                <div class="social">
+                    <p>Мы в социальных сетях</p>
+                    <a class="tg" href="#"></a>
+                    <a class="vk" href="#"></a>
+                </div>
+    
+                <div class="email">
+                    <p>Написать нам</p>
+                    <a href="#"></a>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <script src="{% static 'store/js/scripts.js' %}"></script>
+</body>
+</html>

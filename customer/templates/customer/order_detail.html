@@ -1,0 +1,63 @@
+{% extends 'customer/profile.html' %}
+
+
+{% block user_content %}
+<div class="user-info-zone order-zone">
+    <h3>Информация о заказе №{{ order.id }}</h3>
+
+    <div class="order">
+        <div class="order-header">
+            <p class="status">Статус: <span>{{ order.get_status_display }}</span></p>
+            <p class="date">Дата заказа: {{ order.date }}</p>
+            <p class="price">Сумма заказа: <span>{{ order.total_price }}</span></p>
+            {% if order.comment %}
+                <p class="comment">Комментарий: {{ order.comment }}</p>
+            {% endif %}
+            
+        </div>
+        <div class="positions">
+            {% for position in order.position_set.all %}
+                <div class="position">
+                    <div class="book">
+                        <a class="image" href="{{ position.book.get_absolute_url }}">
+                            <img src="{{ position.book.image.url }}" alt="Обложка">
+                        </a>
+                        <div class="info">
+                            <a class="title" href="{{ position.book.get_absolute_url }}">{{ position.book.title }}</a>
+                            <p class="genres-book">Жанр: 
+                                {% for genre in position.book.genre.all %}
+                                    <a href="{{ genre.get_absolute_url }}">{{ genre.title }}</a><span class="comma">, </span>
+                                {% endfor %}
+                            </p>
+                            <p class="author">Автор: <a href="{{ position.book.author.get_absolute_url }}">{{ position.book.author }}</a></p>
+                            <div class="count-zone">
+                                <div class="price">
+                                    <span class="price-rub" id="price">{{ position.purchase_price }}</span>
+                                    <span class="price-count" id="count-{{ position.count }}">за {{ position.count }}шт.</span>
+                                    <span class="purchase_price">при цене <span>{{ position.purchase_price }}</span> за 1шт.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <script>
+            var positions = document.getElementsByClassName('position')
+            console.log(positions.length)
+            for(var i=0; i < positions.length; i++) {
+                var price_el = positions[i].getElementsByClassName('price-rub')[0]
+                var price = parseInt(price_el.textContent)
+                var count = positions[i].getElementsByClassName('price-count')[0].id.split('-')[1]
+                console.log(price, count)
+                price_el.innerHTML = (price * parseInt(count)).toString()
+            }
+        </script>
+    </div>
+
+    {% include 'store/paginator.html' %}
+    
+</div>
+    
+{% endblock %}

@@ -1,0 +1,72 @@
+@import 'static-variables.scss';
+
+
+.books.books-favourites {
+    .book {
+        margin-top: 15px;
+        padding: 0;
+        background-color: $header_footer_color;
+        border-radius: 5px;
+        &::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .image {
+            display: inline-block;
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+        img {
+            width: 120px;
+            border-radius: 5px;
+        }
+        .info {
+            width: 490px;
+            float: right;
+            .title {
+                display: block;
+                font-size: 24px;
+                margin-bottom: 5px !important;
+                color: $ligth_color;
+                &:hover {
+                    opacity: 0.7;
+                }
+            }
+            p {
+                margin-top: 0;
+                margin-bottom: 5px !important;
+                color: $ligth_color;
+            }
+            a {
+                color: $selected_color;
+            }
+            // .genres-book {
+            //     margin-bottom: 5px;
+            // }
+            // .description {
+                
+            // }
+            .genres-book .comma:last-child {
+                display: none;
+            }
+        }
+        .buy {
+            .price {
+                color: $ligth_color;
+            }
+            .old-price {
+                color: #707070;
+            }
+        }
+        &::after {
+            border-bottom: 2px solid $ligth_color;
+            display: block;
+            content: '';
+        }
+        &:last-child::after {
+            display: none;
+        }
+    }
+}

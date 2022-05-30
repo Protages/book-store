@@ -1,0 +1,21 @@
+{% extends 'customer/profile.html' %}
+
+
+{% block user_content %}
+<div class="user-info-zone settigs-user">
+    <h3>Настройки</h3>
+
+    <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+
+        {% for field in form %}
+            <div class="form-group">
+                <label class="form-control-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                <p>{{ field }}</p>
+            </div>
+        {% endfor %}
+
+        <input type="submit" value="Изменить данные">
+    </form>
+
+</div>
+{% endblock %}
