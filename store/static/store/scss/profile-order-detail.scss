@@ -59,6 +59,9 @@
                         }
                         a {
                             color: $selected_color;
+                            &:hover {
+                                opacity: 0.8;
+                            }
                         }
                         .genres-book {
                             margin-bottom: 10px;

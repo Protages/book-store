@@ -118,3 +118,34 @@ class User(AbstractBaseUser, PermissionsMixin):
         if self.first_name:
             return self.first_name
         return self.user_name
+
+
+class ConnectionHistory(models.Model):
+    ONLINE = 'online'
+    OFFLAIN = 'offline'
+    STATUS = (
+        (ONLINE, 'Онлайн'),
+        (OFFLAIN, 'Офлайн')
+    )
+    user = models.ForeignKey(
+        User,
+        verbose_name='пользователь',
+        on_delete=models.CASCADE
+    )
+    device_id = models.CharField(verbose_name='id устройства', max_length=255)
+    status = models.CharField(
+        verbose_name='статус',
+        choices=STATUS,
+        max_length=10,
+        default=ONLINE
+    )
+    first_login = models.DateTimeField(verbose_name='первый вход', auto_now_add=True)
+    last_login = models.DateTimeField(verbose_name='последний вход', auto_now=True)
+
+    class Meta:
+        verbose_name = 'история соединений'
+        verbose_name_plural = 'истории соединения'
+        unique_together = (('user', 'device_id'),)
+
+    def __str__(self):
+        return f'Соеденение {self.user.first_name}, устр: {self.device_id}'

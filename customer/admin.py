@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Cart, Order, Position
+from .models import Cart, Order, Position, BrowsingHistory
 
 
 @admin.register(Cart)
@@ -33,3 +33,8 @@ class PositionAdmin(admin.ModelAdmin):
         return obj.cart.user
 
     get_user.short_description = 'Пользователь'
+
+
+@admin.register(BrowsingHistory)
+class BrowsingHistoryAdmin(admin.ModelAdmin):
+    list_display = ('id', 'book', 'cart', 'date')

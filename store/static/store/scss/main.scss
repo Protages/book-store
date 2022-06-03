@@ -36,7 +36,7 @@
         .book {
             margin-top: 15px;
             padding: 10px;
-            background-color: $ligth_color;
+            background-color: $header_footer_color;
             border-radius: 5px;
             &::after {
                 content: "";
@@ -56,17 +56,24 @@
             .info {
                 width: 710px;
                 float: right;
+                color: $ligth_color;
                 .title {
                     display: block;
                     font-size: 28px;
                     margin-bottom: 10px;
-                    color: black;
+                    color: $ligth_color;
                     &:hover {
                         opacity: 0.7;
                     }
                 }
                 p {
                     margin-bottom: 10px;
+                }
+                a {
+                    color: $selected_color;
+                    &:hover {
+                        opacity: 0.8;
+                    }
                 }
                 .genres-book {
                     margin-bottom: 10px;
@@ -118,6 +125,7 @@
                 .price {
                     margin-left: 15px;
                     font-size: 18px;
+                    color: $ligth_color;
                     &::after {
                         content: "\20BD";
                     }
@@ -125,7 +133,7 @@
                 .old-price {
                     margin-left: 10px; 
                     font-size: 14px;
-                    color: #424242;
+                    color: $light_gray_color;
                     text-decoration: line-through;
                     &::after {
                         content: "\20BD";

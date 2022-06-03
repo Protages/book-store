@@ -11,13 +11,13 @@
 .book-detail {
     margin-top: 15px;
     padding: 10px;
-    background-color: $ligth_color;
+    background-color: $header_footer_color;
     border-radius: 5px;
     .top {
         .image {
             display: inline-block;
             img {
-                width: 300px;
+                width: 200px;
                 border-radius: 5px;
             }
         }
@@ -25,6 +25,7 @@
             vertical-align: top;
             margin-left: 15px;
             display: inline-block;
+            color: $ligth_color;
             .book-title {
                 font-size: 32px;
             }
@@ -32,6 +33,12 @@
                 margin-top: 10px;
                 .comma:last-child {
                     display: none;
+                }
+            }
+            a {
+                color: $selected_color;
+                &:hover {
+                    opacity: 0.8;
                 }
             }
         }
@@ -44,12 +51,13 @@
 
     .middle {
         margin-top: 15px;
+        color: $ligth_color;
         .description-title {
             font-size: 20px;
         }
         hr {
             border: none;
-            outline: 2px solid $header_footer_color;
+            outline: 2px solid $ligth_color;
         }
         .description {
             margin-top: 15px;
@@ -58,26 +66,49 @@
 
     .bottom {
         .buy {
-            margin-top: 15px;
-            button {
+            position: relative;
+            margin-top: 10px;
+            .btn-buy {
+                display: inline-block;
+                box-sizing: border-box;
+                text-align: center;
                 border: none;
-                border-radius: 8px;
+                border-radius: 5px;
+                border: 2px solid $selected_color;
                 width: 150px;
-                padding: 10px;
-                padding-left: 45px;
+                padding: 5px;
+                padding-left: 20px;
                 padding-right: 20px;
-                background-color: $header_footer_color;
+                background-color: $selected_color;
                 color: $ligth_color;
                 font-size: 16px;
+                cursor: pointer;
 
-                background-image: url("img/product-card-img.png");
-                background-repeat: no-repeat;
-                background-size: 30px;
-                background-position: 27px 9px;
+                &.in_cart {
+                    background-color: $green_color;
+                    border-color: $green_color;
+                }
+
+                span::before {
+                    display: inline-block;
+                    vertical-align: top;
+                    content: "";
+                    background-image: url("img/basket-white.svg");
+                    background-repeat: no-repeat;
+                    width: 20px;
+                    height: 20px;
+                    margin-right: 7px;
+                    background-size: 20px;
+                }
+
+                &:hover {
+                    opacity: 0.8;
+                }
             }
             .price {
                 margin-left: 15px;
                 font-size: 18px;
+                color: $ligth_color;
                 &::after {
                     content: "\20BD";
                 }
@@ -85,13 +116,232 @@
             .old-price {
                 margin-left: 10px; 
                 font-size: 14px;
-                color: #424242;
+                color: $light_gray_color;
                 text-decoration: line-through;
                 &::after {
                     content: "\20BD";
                 }
             }
+            .favourites {
+                position: absolute;
+                display: inline-block;
+                right: 20px;
+                top: 10px;
+                .btn {
+                    padding: 5px;
+                    padding-left: 15px;
+                    padding-right: 15px;
+                    color: $selected_color;
+                    border: 2px solid $selected_color;
+                    border-radius: 5px;
+                    &:hover {
+                        background-color: $selected_color;
+                        color: $ligth_color;
+                        cursor: pointer;
+                    }
+                }
+                .in_favourites {
+                    background-color: $selected_color;
+                    color: $ligth_color;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+.comments {
+    background-color: $header_footer_color;
+    padding: 10px;
+    padding-bottom: 20px;
+    margin-top: 15px;
+    border-radius: 5px;
+    color: $ligth_color;
+    .comments-title {
+        font-size: 24px;
+    }
+    .btn-login {
+        cursor: pointer;
+            display: inline-block;
+            background-color: $header_footer_color;
+            margin-top: 5px;
+            padding: 5px;
+            padding-left: 20px;
+            padding-right: 20px;
+            border-radius: 5px;
+            border: 2px solid $selected_color;
+            color: $selected_color;
+            font-size: 18px;
+            &:hover {
+                background-color: $selected_color;
+                color: $ligth_color;
+            }
+    }
+    form {
+        textarea {
+            box-sizing: border-box;
+            width: 100%;
+            margin-top: 10px;
+            padding: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            outline: none;
+            border: 1px solid $selected_color;
+            background-color: $header_footer_color;
+            color: $ligth_color;
+            resize: none;
+            height: 60px;
+        }
+        button,
+        .answer-submit-btn {
+            cursor: pointer;
+            display: inline-block;
+            background-color: $header_footer_color;
+            margin-top: 5px;
+            padding: 5px;
+            padding-left: 20px;
+            padding-right: 20px;
+            border-radius: 5px;
+            border: 2px solid $selected_color;
+            color: $selected_color;
+            font-size: 18px;
+            &:hover {
+                background-color: $selected_color;
+                color: $ligth_color;
+            }
+        }
+    }
+
+    .comment {
+        margin-top: 25px;
+        &.show-comment {
+            background-color: $opacity_selected_color;
+            outline: 5px solid $opacity_selected_color;
+            border-radius: 5px;
+        }
+        .image {
+            float: left;
+            img {
+                width: 50px;
+                border-radius: 50%;
+            }
+        }
+        .comment-info {
+            position: relative;
+            display: block;
+            float: left;
+            margin-left: 10px;
+            width: 92%;
+            p {
+                display: inline-block;
+            }
+            .user-name {
+                font-size: 20px;
+            }
+            .date {
+                font-size: 14px;
+                color: $light_gray_color;
+                margin-left: 5px;
+                &.date-change {
+                    float: right;
+                    margin-left: 0px;
+                    margin-top: 5px;
+                }
+            }
+            .comment-change {
+                float: right;
+                cursor: pointer;
+                margin-right: 15px;
+                color: $light_gray_color;
+                &:hover {
+                    color: $selected_color;
+                }
+            }
+            .delete {
+                float: right;
+                cursor: pointer;
+                color: $light_gray_color;
+                &:hover {
+                    color: red;
+                }
+            }
+            .comment-delete {
+                display: none;
+            }
+            .comment-text {
+                margin-top: 5px;
+                display: block;
+                &.comment-text-delete {
+                    color: $light_gray_color;
+                }
+            }
+            .answer {
+                cursor: pointer;
+                margin-top: 5px;
+                display: inline-block;
+                color: $light_gray_color;
+                &:hover {
+                    color: $selected_color;
+                }
+            }
             
+            .answer-form {
+                textarea {
+                    box-sizing: border-box;
+                    width: 100%;
+                    margin-top: 10px;
+                    padding: 5px;
+                    padding-left: 10px;
+                    padding-right: 10px;
+                    border-radius: 5px;
+                    font-size: 14px;
+                    outline: none;
+                    border: 1px solid $selected_color;
+                    background-color: $header_footer_color;
+                    color: $ligth_color;
+                    resize: none;
+                    height: 60px;
+                }
+                .answer-submit-btn {
+                    cursor: pointer;
+                    display: inline-block;
+                    background-color: $header_footer_color;
+                    margin-top: 5px;
+                    padding: 5px;
+                    padding-left: 20px;
+                    padding-right: 20px;
+                    border-radius: 5px;
+                    border: 2px solid $selected_color;
+                    color: $selected_color;
+                    font-size: 18px;
+                    &:hover {
+                        background-color: $selected_color;
+                        color: $ligth_color;
+                    }
+                }
+            }
+        }
+        &::after {
+            display: table;
+            content: "";
+            clear: both;
+        }
+    }
+
+    .subcomment {
+        margin-top: 20px;
+        padding-left: 60px;
+        .subcomment-to-comment {
+            color: $light_gray_color;
+            margin-bottom: 5px;
+            cursor: pointer;
+            &:hover {
+                color: $selected_color
+            }
+            p {
+                display: inline-block;
+            }
         }
     }
 }

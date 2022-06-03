@@ -136,4 +136,22 @@
             }
         }
     }
+
+    .btn-back-forgot {
+        cursor: pointer;
+        display: inline-block;
+        background-color: $header_footer_color;
+        margin-top: 20px;
+        padding: 5px;
+        padding-left: 20px;
+        padding-right: 20px;
+        border-radius: 5px;
+        border: 2px solid $selected_color;
+        color: $selected_color;
+        font-size: 18px;
+        &:hover {
+            background-color: $selected_color;
+            color: $ligth_color;
+        }
+    }
 }

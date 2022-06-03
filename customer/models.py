@@ -23,7 +23,7 @@ class Cart(models.Model):
         verbose_name_plural = 'корзины'
 
     def __str__(self):
-        return f'Cart of {self.user.first_name}'
+        return f'Корзина польз. {self.user.first_name}'
 
 
 class Order(models.Model):
@@ -63,7 +63,7 @@ class Order(models.Model):
         verbose_name_plural = 'заказы'
 
     def __str__(self):
-        return f'Order of {self.cart.user.first_name}'
+        return f'заказ польз. {self.cart.user.first_name}'
 
     def get_absolute_url(self):
         return reverse('order_detail', kwargs={'order_id': self.pk})
@@ -101,4 +101,18 @@ class Position(models.Model):
         verbose_name_plural = 'позиции'
 
     def __str__(self):
-        return f'Position of {self.cart.user.first_name}'
+        return f'Позиция польз. {self.cart.user.first_name}'
+
+
+class BrowsingHistory(models.Model):
+    book = models.ForeignKey(Book, verbose_name='книга', on_delete=models.CASCADE)
+    cart = models.ForeignKey(Cart, verbose_name='корзина', on_delete=models.CASCADE)
+    date = models.DateTimeField(verbose_name='дата', default=timezone.now)
+
+    class Meta:
+        verbose_name = 'история просмотра'
+        verbose_name_plural = 'истории просмотров'
+        ordering = ['-date']
+
+    def __str__(self):
+        return f'История просмотра {self.pk}'

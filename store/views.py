@@ -1,10 +1,15 @@
+from django.shortcuts import redirect
 from django.views.generic import DetailView, ListView
 from django.db.models import Count
+from django.utils import timezone
+
+from customer.models import Cart, BrowsingHistory
 
 from .models import (
     Author,
     Genre,
     Book,
+    Comment
 )
 from .utils import MenuAndSortMixin, MenuMixin
 
@@ -30,14 +35,38 @@ class BookView(MenuMixin, DetailView):
     template_name = 'store/book_detail.html'
     context_object_name = 'book'
 
+    def get(self, request, *args, **kwargs):
+        self.add_history_cart()
+        return super().get(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        if self.request.user.is_authenticated:
+            Comment.objects.create(
+                user=self.request.user,
+                book=self.get_object(),
+                text=self.request.POST.get('comment-text')
+            )
+        return redirect('book-detail', slug=self.kwargs.get('slug'))
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context.update(self.get_menu_context())
+        context.update({'comments': self.book.comment_set.filter(comment_to=None)})
 
         return context
 
     def get_object(self):
-        return self.model.objects.get(slug=self.kwargs.get('slug'))
+        self.book = Book.objects.get(slug=self.kwargs.get('slug'))
+        return self.book
+
+    def add_history_cart(self):
+        if self.request.user.is_authenticated:
+            user_cart = Cart.objects.get(user=self.request.user)
+            BrowsingHistory.objects.update_or_create(
+                book=self.get_object(),
+                cart=user_cart,
+                defaults={'date': timezone.now()}
+            )
 
 
 class GenresView(MenuMixin, ListView):

@@ -272,6 +272,13 @@ class Comment(models.Model):
         on_delete=models.CASCADE,
         blank=True, null=True
     )
+    main_comment = models.ForeignKey(
+        'self',
+        related_name='subcomments',
+        verbose_name='главный комментарий',
+        on_delete=models.CASCADE,
+        blank=True, null=True
+    )
     user = models.ForeignKey(
         USER_MODEL,
         verbose_name='пользователь',

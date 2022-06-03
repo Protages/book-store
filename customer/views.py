@@ -3,7 +3,7 @@ from django.views.generic import DetailView, ListView, View, FormView
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from .models import Cart, Order, Position
+from .models import Cart, Order, Position, BrowsingHistory
 from .utils import UserMenuMixin, OrderSortAndUserMenuMixin
 from .forms import UserSettingForm
 from store.models import Book
@@ -149,12 +149,24 @@ class MessagesView(LoginRequiredMixin, UserMenuMixin, View):
         return render(request, self.template_name, context)
 
 
-class HistoryView(LoginRequiredMixin, UserMenuMixin, View):
+class BrowsingHistoryView(LoginRequiredMixin, UserMenuMixin, ListView):
+    model = BrowsingHistory
     template_name = 'customer/history.html'
+    context_object_name = 'stories'
+    paginate_by = 3
 
     def get(self, request, *args, **kwargs):
-        context = self.get_user_menu_context(user_menu_selected='history')
-        return render(request, self.template_name, context)
+        self.user_cart = Cart.objects.get(user=self.request.user)
+        return super().get(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update(self.get_user_menu_context(user_menu_selected='history'))
+
+        return context
+
+    def get_queryset(self):
+        return BrowsingHistory.objects.filter(cart=self.user_cart)
 
 
 class SettingsView(LoginRequiredMixin, UserMenuMixin, FormView):

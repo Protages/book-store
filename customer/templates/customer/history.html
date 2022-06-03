@@ -2,5 +2,28 @@
 
 
 {% block user_content %}
+<div class="user-info-zone history-zone">
     <h3>История просмотров</h3>
+
+    <div class="books books-favourites">
+        {% for story in stories %}
+            {% include 'store/book.html' with book=story.book %}
+        {% endfor %}
+    </div>
+
+    {% include 'store/paginator.html' %}
+
+    <script>
+        var favourites_book_description = document.getElementsByClassName('book')
+        for(var i=0; i < favourites_book_description.length; i++) {
+            var description = favourites_book_description[i].getElementsByClassName('description')[0]
+            var max_length = 100
+            if(description.textContent.length > max_length) {
+                description.textContent = description.textContent.substring(0, max_length) + '...'
+            }
+            
+        }
+    </script>
+
+</div>
 {% endblock %}

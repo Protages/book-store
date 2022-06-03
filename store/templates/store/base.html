@@ -18,6 +18,11 @@
     <title>Booke Store - главная</title>
 </head>
 <body>
+    {% if request.user.is_authenticated %}
+        <input type="hidden" value="{{ request.user.id }}" id="user-id">
+    {% else %}
+        <input type="hidden" value="none" id="user-id">
+    {% endif %}
     <header class="header">
         <div class="container">
 
@@ -57,7 +62,9 @@
                     <ul>
                         <li><a href="{% url 'profile' %}">Профиль</a></li>
                         <li><a href="{% url 'favourites' %}">Избранное</a></li>
+                        <li><a href="{% url 'cart' %}">Корзина</a></li>
                         <li><a href="{% url 'orders' %}">Заказы</a></li>
+                        <li><a href="{% url 'settings' %}">Настройки</a></li>
                         <li><a href="{% url 'logout' %}?next={{ request.path }}" name="next">Выйти</a></li>
                     </ul>
                 </div>
@@ -113,6 +120,11 @@
         </div>
     </footer>
 
-    <script src="{% static 'store/js/scripts.js' %}"></script>
+    <script src="{% static 'store/js/connection_history.js' %}"></script>
+    <script src="{% static 'store/js/dropdown_user_menu.js' %}"></script>
+    <script src="{% static 'store/js/favourites_books_scripts.js' %}"></script>
+    <script src="{% static 'store/js/cart_books_scripts.js' %}"></script>
+    <script src="{% static 'store/js/user_profile_cart_scripts.js' %}"></script>
+    <script src="{% static 'store/js/comment_user.js' %}"></script>
 </body>
 </html>

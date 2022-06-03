@@ -14,7 +14,7 @@ urlpatterns = [
         name='order_detail'
     ),
     path('messages/', views.MessagesView.as_view(), name='messages'),
-    path('history/', views.HistoryView.as_view(), name='history'),
+    path('history/', views.BrowsingHistoryView.as_view(), name='history'),
     path('settings/', views.SettingsView.as_view(), name='settings'),
     path('reset_password/', views.ResetPasswordView.as_view(), name='reset_password'),
 ]

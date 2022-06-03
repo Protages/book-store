@@ -31,7 +31,6 @@ class OrderSortAndUserMenuMixin(UserMenuMixin):
 
     def get_user_menu_and_order_sort_context(self, user_menu_selected=None,
                                              order_sort_selected=None):
-
         context = self.get_user_menu_context(user_menu_selected)
         context.update({
             'order_sort': self.__ORDER_SORT,

@@ -2,7 +2,7 @@
 
 
 {% block content %}
-    <div class="book-detail">
+    <div class="book-detail" id="{{ book.id }}">
         <div class="top">
             <div class="image">
                 <img src="{{ book.image.url }}" alt="{{ book.title }}">
@@ -49,12 +49,112 @@
 
         <div class="bottom">
             <div class="buy">
-                <button>Купить</button>
-                <span class="price">{{ book.price }}</span>
-                {% if book.old_price %}
-                <span class="old-price">{{ book.old_price }}</span>
+                {% if request.user.is_authenticated %}
+                    <a class="btn-buy btn-buy-authenticated" id="{{ book.id }}" onclick="add_remove_book_cart(this)"><span>Купить</span></a>
+                    <input type="text" value="{% url 'cart' %}" style="display: none;">
+                {% else %}
+                    <a href="{% url 'login' %}?next={{ request.path }}" class="btn-buy" name="next"><span>Купить</span></a> 
                 {% endif %}
+                    <span class="price">{{ book.price }}</span>
+                    
+                {% if book.old_price %}
+                    <span class="old-price">{{ book.old_price }}</span>
+                {% endif %}
+
+                <div class="favourites">
+                    {% if request.user.is_authenticated %}
+                        <span class="btn" id="{{ book.id }}" onclick="add_remove_book_favourites(this);">В избранное</span>
+                    {% else %}
+                        <a href="{% url 'login' %}?next={{ request.path }}" class="btn" name="next">В избранное</a>
+                    {% endif %}
+                </div>
             </div>
         </div>
+    </div>
+
+    <div class="comments">
+        {% if comments %}
+            <p class="comments-title">Комментарии</p>
+        {% else %}
+            <p class="comments-title">Пока комментариев нет</p>
+        {% endif %}
+
+        {% if request.user.is_authenticated %}
+            <form method="post" id="form-comment-add">{% csrf_token %}
+                <textarea name="comment-text" id="" placeholder="Ваш комментарий по книге..."></textarea>
+                <button type="submit">Отправить</button>
+            </form>
+        {% else %}
+            <a href="{% url 'login' %}?next={{ request.path }}" value="{{ request.path }}" name="next" class="btn-login">
+                Войдите для комментирования
+            </a>
+        {% endif %}
+        
+
+        {% for comment in comments %}
+            <div class="comment" id="comment-{{ comment.id }}">
+                <div class="image">
+                    <img src="{{ comment.user.image.url }}" alt="Фото профиля">
+                </div>
+                <div class="comment-info">
+                    <p class="user-name">{{ comment.user }}</p>
+                    <p class="date">{{ comment.date }}</p>
+                    
+                    {% if comment.user == request.user and not comment.is_delete %}
+                        <p class="delete" id="{{ comment.id }}" onclick="comment_delete(this)">удалить</p>
+                        <p class="comment-change" id="{{ comment.id }}" onclick="comment_change(this)">изменить</p>
+                    {% endif %}
+                    {% if comment.is_delete %}
+                        <p class="comment-text comment-text-delete">Комментарий удален пользователем.</p>
+                    {% else %}
+                        <p class="comment-text">{{ comment.text }}</p>
+                    {% endif %}
+                    {% if request.user.is_authenticated %}
+                        <p class="answer" id="{{ comment.id }}" onclick="answer_to_comment(this)">Ответить</p>
+                    {% else %}
+                        <a class="answer" href="{% url 'login' %}?next={{ request.path }}" name="next">Ответить</a>
+                    {% endif %}
+                    {% if comment.date_change %}
+                        <p class="date date-change">изменено: {{ comment.date_change }}</p>
+                    {% endif %}
+
+                    
+                </div>
+            </div>
+            {% if comment.subcomments.all %}
+                {% for subcomment in comment.subcomments.all %}
+                <div class="subcomment comment" id="comment-{{ subcomment.id }}">
+                    <div class="subcomment-to-comment">
+                        <p id="subcomment-to-comment-{{ subcomment.comment_to.id }}" onclick="show_comment(this)">
+                            &#8656; ответ {{ subcomment.comment_to.user }}</p>
+                    </div>
+                    <div class="image">
+                        <img src="{{ subcomment.user.image.url }}" alt="Фото профиля">
+                    </div>
+                    <div class="comment-info">
+                        <p class="user-name">{{ subcomment.user }}</p>
+                        <p class="date">{{ subcomment.date }}</p>
+                        {% if subcomment.user == request.user and not subcomment.is_delete %}
+                            <p class="delete" id="{{ subcomment.id }}" onclick="comment_delete(this)">удалить</p>
+                            <p class="comment-change" id="{{ subcomment.id }}" onclick="comment_change(this)">изменить</p>
+                        {% endif %}
+                        {% if subcomment.is_delete %}
+                            <p class="comment-text comment-text-delete">Комментарий удален пользователем.</p>
+                        {% else %}
+                            <p class="comment-text">{{ subcomment.text }}</p>
+                        {% endif %}
+                        {% if request.user.is_authenticated %}
+                            <p class="answer" id="{{ subcomment.id }}" onclick="answer_to_comment(this)">Ответить</p>
+                        {% else %}
+                            <a class="answer" href="{% url 'login' %}?next={{ request.path }}" name="next">Ответить</a>
+                        {% endif %}
+                        {% if subcomment.date_change %}
+                            <p class="date date-change">изменено: {{ subcomment.date_change }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
     </div>
 {% endblock %}
