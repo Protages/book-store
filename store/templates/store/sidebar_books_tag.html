@@ -1,0 +1,10 @@
+<div class="sidebar-item genres">
+    <p class="title">Популярные книги</p>
+    {% for book in sidebar_books %}
+        <a class="genre" href="{{ book.get_absolute_url }}">
+            <img src="{{ book.image.url }}" alt="{{ book.title }}">
+            <span class="genre-title">{{ book.title }}</span>
+        </a>
+    {% endfor %}
+    <a class="all" href="{% url 'main-page' %}">Все книги ></a>
+</div>

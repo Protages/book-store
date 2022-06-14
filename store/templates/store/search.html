@@ -1,0 +1,67 @@
+{% extends 'store/base.html' %}
+{% load sidebar %}
+
+{% block content %}
+<div class="search">
+    {% if search_filter %}
+    <div class="search-filter">
+        <ul>
+        {% for filter in search_filter %}
+            {% if category == filter.category %}
+            <li><a href="{% url 'search' %}?category={{ filter.category }}&q={{ query }}" class="selected">
+                {{ filter.title }} ({{ filter.count }})
+            </a></li>
+            {% else %}
+            <li><a href="{% url 'search' %}?category={{ filter.category }}&q={{ query }}">
+                {{ filter.title }} ({{ filter.count }})
+            </a></li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+    </div>
+
+    {% if category == 'books' %}
+        <div class="books">
+            {% for book in books %}
+                {% include 'store/book.html' with book=book %}
+            {% endfor %}
+        </div>
+    {% elif category == 'authors' %}
+        <div class="authors">
+            {% for author in authors %}
+                <a class="author" href="{{ author.get_absolute_url }}">
+                    <img src="{{ author.image.url }}" alt="{{ author.name }}">
+                    <div class="info">
+                        <h4 class="title">{{ author.name }}</h4>
+                        <span class="books-count">{{ author.book_set.all.count }} книг
+                        </span>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    {% elif category == 'genres' %}
+        <div class="genres">
+            {% for genre in genres %}
+                <a class="genre" href="{{ genre.get_absolute_url }}">
+                    <img src="{{ genre.image.url }}" alt="{{ genre.title }}">
+                    <h4 class="title">{{ genre.title }}</h4>
+                    <span class="books-count">{{ genre.book_set.all.count }} книг</span>
+                </a>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% else %}
+        <p class="not-found">По вашему запросу: <span class="query">{{ query }}</span> ничего не найдено.</p>
+    {% endif %}
+</div>
+{% endblock %}
+
+
+{% block sidebar %}
+
+    {% sidebar_genres_tag %}
+
+    {% sidebar_books_tag %}
+
+{% endblock %}

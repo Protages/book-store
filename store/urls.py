@@ -6,6 +6,7 @@ from . import collections_views
 
 urlpatterns = [
     path('', views.MainView.as_view(), name='main-page'),
+    path('search/', views.SearchView.as_view(), name='search'),
     path('book/<slug:slug>/', views.BookView.as_view(), name='book-detail'),
 
     path('genres/', views.GenresView.as_view(), name='genres-page'),
@@ -52,4 +53,10 @@ urlpatterns = [
 
     path('authors/', views.AuthorsView.as_view(), name='authors-page'),
     path('author/<slug:slug>/', views.AuthorView.as_view(), name='author-detail'),
+
+    path(
+        'user/<slug:user_name>/',
+        views.UserProfileView.as_view(),
+        name='user-profile'
+    ),
 ]

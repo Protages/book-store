@@ -10,7 +10,7 @@
 
 .genre-detail {
     .title {
-        background-color: $ligth_color;
+        background-color: $header_footer_color;
         display: inline-block;
         border-radius: 5px;
         margin-top: 15px;
@@ -29,10 +29,10 @@
         }
         h2 {
             font-size: 24px;
-            color: black;
+            color: $ligth_color;
         }
         .books-count {
-            color: grey;
+            color: $light_gray_color;
         }
     }
     .sort {
@@ -47,7 +47,7 @@
             display: inline-block;
         }
         a:hover {
-            background-color: #171C4B;
+            background-color: $selected_color;
             border-radius: 5px;
             color: $ligth_color;
         }

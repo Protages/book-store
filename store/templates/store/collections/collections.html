@@ -1,5 +1,6 @@
 {% extends 'store/base.html' %}
 {% load static %}
+{% load sidebar %}
 
 
 {% block content %}
@@ -35,5 +36,7 @@
 
 
 {% block sidebar %}
+    {% sidebar_genres_tag %}
 
+    {% sidebar_books_tag %}
 {% endblock %}

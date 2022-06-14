@@ -21,6 +21,10 @@
                         background-color: $selected_color;
                         color: $ligth_color;
                     }
+                    &.selected {
+                        background-color: $selected_color;
+                        color: $ligth_color;
+                    }
                 }
                 &:first-child {
                     margin-left: 0;

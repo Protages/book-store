@@ -38,8 +38,7 @@ body {
 
 .container {
   width: 1280px;
-  margin: 0 auto;
-  border: 1px dotted grey; }
+  margin: 0 auto; }
 
 .header {
   background-color: #1c1f22;
@@ -53,6 +52,8 @@ body {
     margin-top: -0.825em; }
     .header .menu .logo-li {
       margin-right: 60px; }
+      .header .menu .logo-li:hover {
+        opacity: 0.8; }
       .header .menu .logo-li a {
         background: url("img/booke-img.png") no-repeat;
         background-size: 60px 60px;
@@ -181,7 +182,6 @@ body {
   min-height: 900px;
   padding-bottom: 20px; }
   .center .column {
-    border: 1px dotted red;
     display: inline-block; }
   .center .column-left {
     width: 900px; }
@@ -353,53 +353,86 @@ body {
         margin-left: 5px; }
   .center .sidebar {
     padding-top: 65px; }
-    .center .sidebar .genres {
+    .center .sidebar .sidebar-item {
+      margin-bottom: 15px;
       padding: 10px;
       background-color: #1c1f22;
       border-radius: 5px; }
-      .center .sidebar .genres .title {
+      .center .sidebar .sidebar-item .title {
         font-size: 24px;
         color: #fefbf1; }
-      .center .sidebar .genres .genre {
+      .center .sidebar .sidebar-item .genre {
         position: relative;
         display: block;
         padding: 12px;
         padding-left: 55px;
         margin-top: 5px; }
-        .center .sidebar .genres .genre img {
+        .center .sidebar .sidebar-item .genre img {
           position: absolute;
           top: 1px;
           left: 5px;
-          width: 40px; }
-        .center .sidebar .genres .genre .genre-title {
+          height: 40px;
+          border-radius: 5px; }
+        .center .sidebar .sidebar-item .genre .genre-title {
           color: #fefbf1;
           font-size: 16px; }
-        .center .sidebar .genres .genre:hover {
+        .center .sidebar .sidebar-item .genre:hover {
           outline: 2px solid #0DB8DE;
           border-radius: 5px;
           background-color: rgba(13, 184, 222, 0.15); }
-      .center .sidebar .genres .all {
+      .center .sidebar .sidebar-item .all {
         display: inline-block;
         padding: 10px;
         margin-top: 15px;
         color: #979797;
         font-size: 14px; }
-        .center .sidebar .genres .all:hover {
+        .center .sidebar .sidebar-item .all:hover {
           opacity: 0.7; }
+  .center .search .search-filter {
+    margin-top: 15px; }
+    .center .search .search-filter ul {
+      list-style: none; }
+      .center .search .search-filter ul li {
+        display: inline-block;
+        margin-left: 5px; }
+        .center .search .search-filter ul li a {
+          display: inline-block;
+          border: 2px solid #0DB8DE;
+          padding: 5px;
+          padding-left: 10px;
+          padding-right: 10px;
+          border-radius: 5px;
+          color: #0DB8DE; }
+          .center .search .search-filter ul li a:hover {
+            background-color: #0DB8DE;
+            color: #fefbf1; }
+          .center .search .search-filter ul li a.selected {
+            background-color: #0DB8DE;
+            color: #fefbf1; }
+        .center .search .search-filter ul li:first-child {
+          margin-left: 0; }
+  .center .search .not-found {
+    color: #fefbf1;
+    font-size: 28px;
+    display: block;
+    margin-top: 60px;
+    text-align: center; }
+    .center .search .not-found .query {
+      color: #0DB8DE; }
   .center .content .genres-title {
     margin-top: 15px;
     border-radius: 5px;
-    background-color: #fefbf1;
+    background-color: #1c1f22;
     display: inline-block;
     padding: 10px;
     padding-left: 70px;
     padding-right: 70px; }
     .center .content .genres-title h3 {
-      color: black;
+      color: #fefbf1;
       font-size: 24px; }
   .center .content .genres {
     margin-top: 15px;
-    background-color: #fefbf1;
+    background-color: #1c1f22;
     border-radius: 5px;
     padding: 10px;
     padding-bottom: 15px; }
@@ -417,13 +450,13 @@ body {
         width: 60px; }
       .center .content .genres .genre .title {
         font-size: 18px;
-        color: black; }
+        color: #fefbf1; }
       .center .content .genres .genre .books-count {
-        color: grey; }
+        color: #979797; }
       .center .content .genres .genre:hover {
-        outline: 2px solid #1c1f22;
+        outline: 2px solid #0DB8DE;
         border-radius: 5px;
-        background-color: #171c4b0e; }
+        background-color: rgba(13, 184, 222, 0.15); }
   .center .book-detail {
     margin-top: 15px;
     padding: 10px;
@@ -596,6 +629,8 @@ body {
         .center .comments .comment .image img {
           width: 50px;
           border-radius: 50%; }
+        .center .comments .comment .image:hover {
+          opacity: 0.8; }
       .center .comments .comment .comment-info {
         position: relative;
         display: block;
@@ -605,7 +640,10 @@ body {
         .center .comments .comment .comment-info p {
           display: inline-block; }
         .center .comments .comment .comment-info .user-name {
-          font-size: 20px; }
+          font-size: 20px;
+          color: #fefbf1; }
+          .center .comments .comment .comment-info .user-name:hover {
+            color: #0DB8DE; }
         .center .comments .comment .comment-info .date {
           font-size: 14px;
           color: #979797;
@@ -679,15 +717,22 @@ body {
       margin-top: 20px;
       padding-left: 60px; }
       .center .comments .subcomment .subcomment-to-comment {
-        color: #979797;
-        margin-bottom: 5px;
-        cursor: pointer; }
-        .center .comments .subcomment .subcomment-to-comment:hover {
-          color: #0DB8DE; }
+        display: block;
+        width: 100%;
+        box-sizing: border-box; }
         .center .comments .subcomment .subcomment-to-comment p {
+          color: #979797;
+          margin-bottom: 5px;
+          cursor: pointer;
           display: inline-block; }
+          .center .comments .subcomment .subcomment-to-comment p:hover {
+            color: #0DB8DE; }
+          .center .comments .subcomment .subcomment-to-comment p p {
+            display: inline-block; }
+  .center .book-detail-sidebar {
+    margin-top: -50px; }
   .center .genre-detail .title {
-    background-color: #fefbf1;
+    background-color: #1c1f22;
     display: inline-block;
     border-radius: 5px;
     margin-top: 15px;
@@ -705,9 +750,9 @@ body {
       margin-left: 15px; }
     .center .genre-detail .title h2 {
       font-size: 24px;
-      color: black; }
+      color: #fefbf1; }
     .center .genre-detail .title .books-count {
-      color: grey; }
+      color: #979797; }
   .center .genre-detail .sort {
     margin-top: 15px;
     border-radius: 5px;
@@ -719,29 +764,29 @@ body {
       font-size: 16px;
       display: inline-block; }
     .center .genre-detail .sort a:hover {
-      background-color: #171C4B;
+      background-color: #0DB8DE;
       border-radius: 5px;
       color: #fefbf1; }
   .center .content .authors-title {
     margin-top: 15px;
     border-radius: 5px;
-    background-color: #fefbf1;
+    background-color: #1c1f22;
     display: inline-block;
     padding: 10px;
     padding-left: 70px;
     padding-right: 70px; }
     .center .content .authors-title h3 {
-      color: black;
+      color: #fefbf1;
       font-size: 24px; }
   .center .content .authors {
-    background-color: #fefbf1;
+    background-color: #1c1f22;
     margin-top: 15px;
     border-radius: 5px;
     padding: 10px; }
     .center .content .authors .search input {
       padding: 10px;
       width: 100%;
-      border: 2px solid black;
+      border: 2px solid #fefbf1;
       border-radius: 10px; }
     .center .content .authors .author {
       display: block;
@@ -757,27 +802,27 @@ body {
         vertical-align: top; }
         .center .content .authors .author .info .title {
           font-size: 24px;
-          color: black; }
+          color: #fefbf1; }
         .center .content .authors .author .info .books-count {
-          color: grey; }
+          color: #979797; }
       .center .content .authors .author:hover {
-        outline: 2px solid #1c1f22;
-        border-radius: 10px;
-        background-color: #171c4b0e; }
+        outline: 2px solid #0DB8DE;
+        background-color: rgba(13, 184, 222, 0.15);
+        border-radius: 5px; }
   .center .sidebar-authors-margin {
     margin-top: 10px; }
   .center .author-detail {
     margin-top: 15px;
     padding: 10px;
     border-radius: 5px;
-    background-color: #fefbf1; }
+    background-color: #1c1f22; }
     .center .author-detail .name {
       font-size: 30px;
-      color: black;
+      color: #fefbf1;
       margin-bottom: 10px; }
     .center .author-detail .books-count {
       display: block;
-      color: gray;
+      color: #979797;
       margin-bottom: 15px; }
     .center .author-detail img {
       width: 100px;
@@ -787,20 +832,24 @@ body {
       display: inline-block;
       margin-left: 10px;
       width: 700px;
-      vertical-align: top; }
+      vertical-align: top;
+      color: #fefbf1; }
       .center .author-detail .info .biograpy button {
         display: block;
         margin-top: 10px;
         border: none;
         outline: none;
-        border-radius: 10px;
+        border-radius: 5px;
         padding: 5px;
         padding-left: 10px;
         padding-right: 10px;
-        cursor: pointer; }
+        cursor: pointer;
+        background-color: #1c1f22;
+        color: #979797;
+        outline: 1px solid #0DB8DE; }
         .center .author-detail .info .biograpy button:hover {
-          outline: 1px solid #1c1f22;
-          background-color: #171c4b0e; }
+          background-color: #0DB8DE;
+          color: #fefbf1; }
     .center .author-detail::after {
       display: table;
       clear: both;
@@ -827,18 +876,18 @@ body {
   .center .content .collections-title {
     margin-top: 15px;
     border-radius: 5px;
-    background-color: #fefbf1;
+    background-color: #1c1f22;
     display: inline-block;
     padding: 10px;
     padding-left: 70px;
     padding-right: 70px; }
     .center .content .collections-title h3 {
-      color: black;
+      color: #fefbf1;
       font-size: 24px; }
   .center .content .collections {
     margin-top: 15px; }
     .center .content .collections .collection {
-      background-color: #fefbf1;
+      background-color: #1c1f22;
       border-radius: 5px;
       margin-left: 15px;
       margin-bottom: 15px;
@@ -851,23 +900,23 @@ body {
         margin-top: 5px;
         font-size: 18px;
         text-align: center;
-        color: black; }
+        color: #fefbf1; }
       .center .content .collections .collection .books-count {
         margin-bottom: 10px;
-        color: grey;
+        color: #979797;
         text-align: center; }
       .center .content .collections .collection .hidden {
         text-indent: -9999px;
         white-space: nowrap; }
       .center .content .collections .collection:hover {
-        outline: 4px solid #1c1f22;
-        opacity: 0.9; }
+        outline: 2px solid #0DB8DE;
+        background-color: rgba(13, 184, 222, 0.15); }
       .center .content .collections .collection:nth-child(3n-2) {
         margin-left: 0px; }
   .center .content .collection-detail {
     margin-top: 15px; }
     .center .content .collection-detail .collection-info {
-      background-color: #fefbf1;
+      background-color: #1c1f22;
       border-radius: 5px;
       display: inline-block;
       padding: 10px;
@@ -876,14 +925,14 @@ body {
       .center .content .collection-detail .collection-info .title {
         vertical-align: middle;
         font-size: 24px;
-        color: black; }
+        color: #fefbf1; }
       .center .content .collection-detail .collection-info .books-count {
-        color: gray; }
+        color: #979797; }
     .center .content .collection-detail .subcollections .subcollection {
       width: 190px;
       margin-top: 15px;
       margin-left: 15px;
-      background-color: #fefbf1;
+      background-color: #1c1f22;
       padding: 10px;
       border-radius: 5px;
       display: inline-block; }
@@ -896,36 +945,35 @@ body {
         margin-top: 10px;
         text-align: center;
         font-size: 18px;
-        color: black; }
+        color: #fefbf1; }
       .center .content .collection-detail .subcollections .subcollection .books-count {
-        color: gray;
+        color: #979797;
         text-align: center; }
       .center .content .collection-detail .subcollections .subcollection:nth-child(4n-3) {
         margin-left: 0px; }
       .center .content .collection-detail .subcollections .subcollection:hover {
-        outline: 3px solid #1c1f22;
-        opacity: 0.9;
-        border-radius: 10px; }
+        outline: 3px solid #0DB8DE;
+        background-color: rgba(13, 184, 222, 0.15); }
   .center .content .subcollection-detail {
     margin-top: 15px; }
     .center .content .subcollection-detail .collection-info {
-      background-color: #fefbf1;
+      background-color: #1c1f22;
       border-radius: 5px;
       display: inline-block;
       padding: 10px; }
       .center .content .subcollection-detail .collection-info .title {
         vertical-align: middle;
         font-size: 24px;
-        color: black; }
+        color: #fefbf1; }
       .center .content .subcollection-detail .collection-info:hover {
-        outline: 3px solid #1c1f22;
-        opacity: 0.9;
-        border-radius: 10px; }
+        outline: 2px solid #0DB8DE;
+        background-color: rgba(13, 184, 222, 0.15); }
     .center .content .subcollection-detail .subcollection {
-      background-color: #fefbf1;
+      background-color: #1c1f22;
       border-radius: 5px;
       padding: 10px;
-      margin-top: 15px; }
+      margin-top: 15px;
+      color: #fefbf1; }
       .center .content .subcollection-detail .subcollection img {
         width: 70px;
         display: inline-block;
@@ -937,9 +985,9 @@ body {
         .center .content .subcollection-detail .subcollection .subcollection-info h3 {
           font-size: 22px; }
         .center .content .subcollection-detail .subcollection .subcollection-info .description {
-          color: gray; }
+          color: #979797; }
         .center .content .subcollection-detail .subcollection .subcollection-info .books-count {
-          color: gray; }
+          color: #979797; }
   .center .profile {
     margin-top: 15px; }
     .center .profile .user-menu-zone {
@@ -949,7 +997,7 @@ body {
         background-color: #1c1f22;
         border-radius: 5px;
         padding: 10px;
-        height: 200px; }
+        min-height: 200px; }
         .center .profile .user-menu-zone .title-zone img {
           width: 130px;
           border-radius: 50%;
@@ -964,8 +1012,8 @@ body {
         .center .profile .user-menu-zone .title-zone .name {
           font-size: 24px;
           color: #fefbf1; }
-        .center .profile .user-menu-zone .title-zone .name:hover {
-          color: #0DB8DE; }
+          .center .profile .user-menu-zone .title-zone .name:hover {
+            color: #0DB8DE; }
         .center .profile .user-menu-zone .title-zone .online {
           color: green;
           position: relative;
@@ -1012,6 +1060,21 @@ body {
       .center .profile .user-info-zone p {
         color: #fefbf1;
         margin-top: 15px; }
+      .center .profile .user-info-zone .author-interest,
+      .center .profile .user-info-zone .book-interest {
+        color: #0DB8DE; }
+        .center .profile .user-info-zone .author-interest::after,
+        .center .profile .user-info-zone .book-interest::after {
+          content: ", ";
+          color: #fefbf1; }
+        .center .profile .user-info-zone .author-interest:last-child::after,
+        .center .profile .user-info-zone .book-interest:last-child::after {
+          display: none; }
+        .center .profile .user-info-zone .author-interest:hover,
+        .center .profile .user-info-zone .book-interest:hover {
+          opacity: 0.8; }
+  .center .profile-sidebar {
+    margin-top: -50px; }
   .center .books.books-favourites .book {
     margin-top: 15px;
     padding: 0;
@@ -1321,6 +1384,9 @@ body {
           border-radius: 5px;
           color: #0DB8DE; }
           .center .orders-zone .order-filter ul li a:hover {
+            background-color: #0DB8DE;
+            color: #fefbf1; }
+          .center .orders-zone .order-filter ul li a.selected {
             background-color: #0DB8DE;
             color: #fefbf1; }
         .center .orders-zone .order-filter ul li:first-child {

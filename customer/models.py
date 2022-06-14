@@ -27,11 +27,11 @@ class Cart(models.Model):
 
 
 class Order(models.Model):
-    IN_PROCESSING = 'IP'
-    SENT = 'S'
-    WAIT = 'W'
-    COMPLETED = 'CP'
-    CANCEL = 'CL'
+    IN_PROCESSING = 'in_processing'
+    SENT = 'sent'
+    WAIT = 'wait'
+    COMPLETED = 'completed'
+    CANCEL = 'cancel'
     STATUS = [
         (IN_PROCESSING, 'В обработке'),
         (SENT, 'Отправлен в пункт выдачи'),
@@ -61,6 +61,7 @@ class Order(models.Model):
     class Meta:
         verbose_name = 'заказ'
         verbose_name_plural = 'заказы'
+        ordering = ('-date',)
 
     def __str__(self):
         return f'заказ польз. {self.cart.user.first_name}'
@@ -112,6 +113,7 @@ class BrowsingHistory(models.Model):
     class Meta:
         verbose_name = 'история просмотра'
         verbose_name_plural = 'истории просмотров'
+        unique_together = [['book', 'cart']]
         ordering = ['-date']
 
     def __str__(self):

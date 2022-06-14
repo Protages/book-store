@@ -109,15 +109,26 @@ class OrdersView(LoginRequiredMixin, OrderSortAndUserMenuMixin, ListView):
     context_object_name = 'orders'
     paginate_by = 3
 
+    def get(self, request, *args, **kwargs):
+        self.query = self.request.GET.get('q')
+        return super().get(request, *args, **kwargs)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context.update(
-            self.get_user_menu_and_order_sort_context(user_menu_selected='orders'))
-
+            self.get_user_menu_and_order_sort_context(
+                user_menu_selected='orders',
+                order_sort_selected=self.query
+            )
+        )
         return context
 
     def get_queryset(self):
-        return Cart.objects.get(user=self.request.user).order_set.order_by('-date')
+        if self.query:
+            return Cart.objects.get(user=self.request.user).order_set.filter(
+                status=self.query
+            )
+        return Cart.objects.get(user=self.request.user).order_set.all()
 
 
 class OrderDetailView(LoginRequiredMixin, UserMenuMixin, ListView):

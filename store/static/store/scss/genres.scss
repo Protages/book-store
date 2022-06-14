@@ -13,20 +13,20 @@
     .genres-title {
         margin-top: 15px;
         border-radius: 5px;
-        background-color: $ligth_color;
+        background-color: $header_footer_color;
         display: inline-block;
         padding: 10px;
         padding-left: 70px;
         padding-right: 70px;
         h3 {
-            color: black;
+            color: $ligth_color;
             font-size: 24px;
         }
     }
     
     .genres {
         margin-top: 15px;
-        background-color: $ligth_color;
+        background-color: $header_footer_color;
         border-radius: 5px;
         padding: 10px;
         padding-bottom: 15px;
@@ -45,15 +45,15 @@
             }
             .title {
                 font-size: 18px;
-                color: black;
+                color: $ligth_color;
             }
             .books-count {
-                color: grey;
+                color: $light_gray_color;
             }
             &:hover {
-                outline: 2px solid $header_footer_color;
+                outline: 2px solid $selected_color;
                 border-radius: 5px;
-                background-color: #171c4b0e;
+                background-color: $opacity_selected_color;
             }
         }
     }

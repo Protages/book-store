@@ -12,7 +12,7 @@
     .collection-detail {
         margin-top: 15px;
         .collection-info {
-            background-color: $ligth_color;
+            background-color: $header_footer_color;
             border-radius: 5px;
             display: inline-block;
             padding: 10px;
@@ -21,10 +21,10 @@
             .title {
                 vertical-align: middle;
                 font-size: 24px;
-                color: black;
+                color: $ligth_color;
             }
             .books-count {
-                color: gray;
+                color: $light_gray_color;
             }
         }
 
@@ -33,7 +33,7 @@
                 width: 190px;
                 margin-top: 15px;
                 margin-left: 15px;
-                background-color: $ligth_color;
+                background-color: $header_footer_color;
                 padding: 10px;
                 border-radius: 5px;
                 display: inline-block;
@@ -47,19 +47,18 @@
                     margin-top: 10px;
                     text-align: center;
                     font-size: 18px;
-                    color: black;
+                    color: $ligth_color;
                 }
                 .books-count {
-                    color: gray;
+                    color: $light_gray_color;
                     text-align: center;
                 }
                 &:nth-child(4n-3) {
                     margin-left: 0px;
                 }
                 &:hover {
-                    outline: 3px solid $header_footer_color;
-                    opacity: 0.9;
-                    border-radius: 10px;
+                    outline: 3px solid $selected_color;
+                    background-color: $opacity_selected_color;
                 }
             }
         }
@@ -68,27 +67,27 @@
     .subcollection-detail {
         margin-top: 15px;
         .collection-info {
-            background-color: $ligth_color;
+            background-color: $header_footer_color;
             border-radius: 5px;
             display: inline-block;
             padding: 10px;
             .title {
                 vertical-align: middle;
                 font-size: 24px;
-                color: black;
+                color: $ligth_color;
             }
             &:hover {
-                outline: 3px solid $header_footer_color;
-                opacity: 0.9;
-                border-radius: 10px;
+                outline: 2px solid $selected_color;
+                background-color: $opacity_selected_color;
             }
         }
 
         .subcollection {
-            background-color: $ligth_color;
+            background-color: $header_footer_color;
             border-radius: 5px;
             padding: 10px;
             margin-top: 15px;
+            color: $ligth_color;
             img {
                 width: 70px;
                 display: inline-block;
@@ -102,10 +101,10 @@
                     font-size: 22px;
                 }
                 .description {
-                    color: gray;
+                    color: $light_gray_color;
                 }
                 .books-count {
-                    color: gray;
+                    color: $light_gray_color;
                 }
             }
         }

@@ -19,7 +19,7 @@ body {
 .container {
     width: 1280px;
     margin: 0 auto;
-    border: 1px dotted grey;
+    // border: 1px dotted grey;
 }
 
 
@@ -37,6 +37,9 @@ body {
         margin-top: -0.825em;
         .logo-li {
             margin-right: 60px;
+            &:hover {
+                opacity: 0.8;
+            }
             a {
                 background: url("img/booke-img.png") no-repeat;
                 background-size: 60px 60px;
@@ -193,7 +196,7 @@ body {
     min-height: $center_min_heigth;
     padding-bottom: 20px;
     .column {
-        border: 1px dotted red;
+        // border: 1px dotted red;
         display: inline-block;
     }
     .column-left {
@@ -206,6 +209,9 @@ body {
 
     // main page scss
     @import "main.scss";
+
+    // search page scss
+    @import "search.scss";
 
     // genres page scss
     @import "genres.scss";
@@ -251,6 +257,9 @@ body {
 
     // user profile settings scss
     @import "profile-settings.scss";
+
+    // user pprofile info scss
+    @import "user-profile.scss";
 }
 
 

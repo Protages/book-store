@@ -1,0 +1,47 @@
+@import "static-variables.scss";
+
+
+.search {
+    .search-filter {
+        margin-top: 15px;
+        ul {
+            list-style: none;
+            li {
+                display: inline-block;
+                margin-left: 5px;
+                a {
+                    display: inline-block;
+                    border: 2px solid $selected_color;
+                    padding: 5px;
+                    padding-left: 10px;
+                    padding-right: 10px;
+                    border-radius: 5px;
+                    color: $selected_color;
+                    &:hover {
+                        background-color: $selected_color;
+                        color: $ligth_color;
+                    }
+                    &.selected {
+                        background-color: $selected_color;
+                        color: $ligth_color;
+                    }
+                }
+                &:first-child {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+
+    .not-found {
+        color: $ligth_color;
+        font-size: 28px;
+        display: block;
+        margin-top: 60px;
+        text-align: center;
+
+        .query {
+            color: $selected_color;
+        }
+    }
+}

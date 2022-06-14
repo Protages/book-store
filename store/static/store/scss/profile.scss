@@ -13,7 +13,7 @@
             border-radius: 5px;
             padding: 10px;
             
-            height: 200px;
+            min-height: 200px;
 
             img {
                 width: 130px;
@@ -31,9 +31,9 @@
             .name {
                 font-size: 24px;
                 color: $ligth_color;
-            }
-            .name:hover {
-                color: $selected_color;
+                &:hover {
+                    color: $selected_color;
+                }
             }
             .online {
                 color: green;
@@ -91,14 +91,31 @@
             font-size: 32px;
             color: $ligth_color;
         }
-        
         p {
             color: $ligth_color;
             margin-top: 15px;
+        }
+        .author-interest,
+        .book-interest {
+            color: $selected_color;
+            &::after {
+                content: ", ";
+                color: $ligth_color;
+            }
+            &:last-child::after {
+                display: none;
+            }
+            &:hover {
+                opacity: 0.8;
+            }
         }
     }
 
     // .pagination {
     //     margin-top: 20px;
     // }
+}
+
+.profile-sidebar {
+    margin-top: -50px;
 }

@@ -33,24 +33,22 @@ class LoginView(FormView):
     def form_valid(self, form):
         email = form.cleaned_data.get('email')
         password = form.cleaned_data.get('password')
+        user = authenticate(self.request, email=email, password=password)
 
-        if email and password:
-            user = authenticate(self.request, email=email, password=password)
-
-            if user is not None:
-                login(self.request, user)
-                return redirect(self.get_success_url())
-            else:
-                messages.add_message(
-                    self.request,
-                    messages.INFO,
-                    'EMAIL или ПАРОЛЬ введены не правильно.'
-                )
-                context = self.get_context_data()
-                return self.render_to_response(context)
+        if user is not None:
+            login(self.request, user)
+            return redirect(self.get_success_url())
+        else:
+            messages.add_message(
+                self.request,
+                messages.INFO,
+                'EMAIL или ПАРОЛЬ введены не правильно.'
+            )
+            context = self.get_context_data()
+            return self.render_to_response(context)
 
     def get_success_url(self):
-        if self.next_url:
+        if self.next_url and self.next_url != 'None':
             return self.next_url
         return self.success_url
 
@@ -79,7 +77,7 @@ class RegistrationView(FormView):
         return redirect(self.get_success_url())
 
     def get_success_url(self):
-        if self.next_url:
+        if self.next_url and self.next_url != 'None':
             base_url = reverse(self.success_url)
             query_next_url = urlencode({'next': self.next_url})
             return f'{base_url}?{query_next_url}'

@@ -226,6 +226,9 @@
                 width: 50px;
                 border-radius: 50%;
             }
+            &:hover {
+                opacity: 0.8;
+            }
         }
         .comment-info {
             position: relative;
@@ -238,6 +241,10 @@
             }
             .user-name {
                 font-size: 20px;
+                color: $ligth_color;
+                &:hover {
+                    color: $selected_color;
+                }
             }
             .date {
                 font-size: 14px;
@@ -333,15 +340,26 @@
         margin-top: 20px;
         padding-left: 60px;
         .subcomment-to-comment {
-            color: $light_gray_color;
-            margin-bottom: 5px;
-            cursor: pointer;
-            &:hover {
-                color: $selected_color
-            }
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
             p {
+                color: $light_gray_color;
+                margin-bottom: 5px;
+                cursor: pointer;
                 display: inline-block;
+                &:hover {
+                    color: $selected_color
+                }
+                p {
+                    display: inline-block;
+                }
             }
+            
         }
     }
+}
+
+.book-detail-sidebar {
+    margin-top: -50px;
 }

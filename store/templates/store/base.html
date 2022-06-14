@@ -18,11 +18,6 @@
     <title>Booke Store - главная</title>
 </head>
 <body>
-    {% if request.user.is_authenticated %}
-        <input type="hidden" value="{{ request.user.id }}" id="user-id">
-    {% else %}
-        <input type="hidden" value="none" id="user-id">
-    {% endif %}
     <header class="header">
         <div class="container">
 
@@ -45,8 +40,8 @@
                     {% endfor %}
                     
                     <li class="serch-li">
-                        <form method="get">{% csrf_token %}
-                            <input type="text" placeholder="Поиск...">
+                        <form method="get" action="{% url 'search' %}">
+                            <input type="text" placeholder="Поиск..." name="q" value="{{ query }}" required>
                             <button type="submit"></button>
                         </form>
                     </li>

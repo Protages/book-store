@@ -12,13 +12,13 @@
     .collections-title {
         margin-top: 15px;
         border-radius: 5px;
-        background-color: $ligth_color;
+        background-color: $header_footer_color;
         display: inline-block;
         padding: 10px;
         padding-left: 70px;
         padding-right: 70px;
         h3 {
-            color: black;
+            color: $ligth_color;
             font-size: 24px;
         }
     }
@@ -26,7 +26,7 @@
     .collections {
         margin-top: 15px;
         .collection {
-            background-color: $ligth_color;
+            background-color: $header_footer_color;
             border-radius: 5px;
             margin-left: 15px;
             margin-bottom: 15px;
@@ -40,11 +40,11 @@
                 margin-top: 5px;
                 font-size: 18px;
                 text-align: center;
-                color: black;
+                color: $ligth_color;
             }
             .books-count {
                 margin-bottom: 10px;
-                color: grey;
+                color: $light_gray_color;
                 text-align: center;
             }
             .hidden {
@@ -52,8 +52,8 @@
                 white-space: nowrap; 
             }
             &:hover {
-                outline: 4px solid $header_footer_color;
-                opacity: 0.9;
+                outline: 2px solid $selected_color;
+                background-color: $opacity_selected_color;
             }
             &:nth-child(3n-2) {
                 margin-left: 0px;

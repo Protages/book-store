@@ -98,6 +98,12 @@ class User(AbstractBaseUser, PermissionsMixin):
         default=NOT_SELECTED
     )
     birthday = models.DateField(verbose_name='дата рождения', blank=True, null=True)
+    phone = models.CharField(
+        verbose_name='телефон',
+        max_length=15,
+        unique=True,
+        blank=True, null=True
+    )
     about = models.TextField(verbose_name='о себе', blank=True)
     country = CountryField(verbose_name='страна', blank_label='(выберите страну)')
 
@@ -121,31 +127,26 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 
 class ConnectionHistory(models.Model):
-    ONLINE = 'online'
-    OFFLAIN = 'offline'
-    STATUS = (
-        (ONLINE, 'Онлайн'),
-        (OFFLAIN, 'Офлайн')
-    )
-    user = models.ForeignKey(
+    user = models.OneToOneField(
         User,
         verbose_name='пользователь',
         on_delete=models.CASCADE
     )
-    device_id = models.CharField(verbose_name='id устройства', max_length=255)
-    status = models.CharField(
-        verbose_name='статус',
-        choices=STATUS,
-        max_length=10,
-        default=ONLINE
-    )
+    connections = models.IntegerField(verbose_name='кол-во соединений', default=0)
     first_login = models.DateTimeField(verbose_name='первый вход', auto_now_add=True)
-    last_login = models.DateTimeField(verbose_name='последний вход', auto_now=True)
+    last_activity = models.DateTimeField(verbose_name='последний вход', auto_now=True)
 
     class Meta:
         verbose_name = 'история соединений'
         verbose_name_plural = 'истории соединения'
-        unique_together = (('user', 'device_id'),)
 
     def __str__(self):
-        return f'Соеденение {self.user.first_name}, устр: {self.device_id}'
+        return f'Соеденение {self.user.first_name}'
+
+    @property
+    def is_online(self):
+        return self.connections > 0
+
+    @property
+    def is_offline(self):
+        return self.connections <= 0

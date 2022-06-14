@@ -1,6 +1,6 @@
-<div class="genres">
+<div class="sidebar-item genres">
     <p class="title">Популярные жанры</p>
-    {% for genre in genres %}
+    {% for genre in sidebar_genres %}
         <a class="genre" href="{{ genre.get_absolute_url }}">
             <img src="{{ genre.image.url }}" alt="{{ genre.title }}">
             <span class="genre-title">{{ genre.title }}</span>

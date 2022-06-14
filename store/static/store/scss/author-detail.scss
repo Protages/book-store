@@ -9,15 +9,15 @@
     margin-top: 15px;
     padding: 10px;
     border-radius: 5px;
-    background-color: $ligth_color;
+    background-color: $header_footer_color;
     .name {
         font-size: 30px;
-        color: black;
+        color: $ligth_color;
         margin-bottom: 10px;
     }
     .books-count {
         display: block;
-        color: gray;
+        color: $light_gray_color;
         margin-bottom: 15px;
     }
     img {
@@ -30,20 +30,24 @@
         margin-left: 10px;
         width: 700px;
         vertical-align: top;
+        color: $ligth_color;
         .biograpy {
             button {
                 display: block;
                 margin-top: 10px;
                 border: none;
                 outline: none;
-                border-radius: 10px;
+                border-radius: 5px;
                 padding: 5px;
                 padding-left: 10px;
                 padding-right: 10px;
                 cursor: pointer;
+                background-color: $header_footer_color;
+                color: $light_gray_color;
+                outline: 1px solid $selected_color;
                 &:hover {
-                    outline: 1px solid $header_footer_color;
-                    background-color: #171c4b0e;
+                    background-color: $selected_color;
+                    color: $ligth_color;
                 }
             }
         }

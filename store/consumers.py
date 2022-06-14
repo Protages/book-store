@@ -2,7 +2,6 @@ import json
 
 from django.utils import timezone
 from django.contrib.auth import get_user_model
-from django.shortcuts import get_object_or_404
 from channels.generic.websocket import WebsocketConsumer
 
 from customer.models import Cart, Position
@@ -223,29 +222,25 @@ class ConnectionHistoryConsumer(WebsocketConsumer):
 
     def connect(self):
         self.user = self.scope['user']
+        if self.user.is_authenticated:
+            print('User was connected -------------- ', self.user)
+            self.update_user_status('online')
         self.accept()
+
+    def disconnect(self, code=None):
+        if self.user.is_authenticated:
+            print('User was disconnected -------------- ', self.user)
+            self.update_user_status('offline')
 
     def receive(self, text_data):
         text_data = json.loads(text_data)
         print(text_data)
 
-        message_type = text_data['message_type']
-        user_id = text_data['user_id']
-        agent = text_data['agent']
-        status = text_data['status']
-
-        if message_type == 'update_user_status':
-            self.update_user_status(int(user_id), agent, status)
-
-    def update_user_status(self, user_id, agent, status):
-        user = get_object_or_404(USER_MODEL, id=user_id)
-        connection, created = ConnectionHistory.objects.get_or_create(
-            user=user,
-            device_id=agent
-        )
+    def update_user_status(self, status):
+        connection, created = ConnectionHistory.objects.get_or_create(user=self.user)
         if status == 'online':
-            connection.status = ConnectionHistory.ONLINE
-            connection.last_login = timezone.now()
+            connection.connections += 1
         else:
-            connection.status = ConnectionHistory.OFFLAIN
+            connection.connections -= 1
+            connection.last_activity = timezone.now()
         connection.save()

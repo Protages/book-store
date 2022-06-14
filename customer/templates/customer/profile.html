@@ -1,4 +1,5 @@
 {% extends 'store/base.html' %}
+{% load sidebar %}
 
 
 {% block content %}
@@ -7,8 +8,16 @@
 
             <div class="title-zone">
                 <img src="{{ user.image.url }}" alt="{{ user }}">
-                <a class="name" href="{% url 'profile' %}">{{ user }}</a>
-                <p class="online">online</p>
+                {% if request.user == user %}
+                    <a class="name" href="{% url 'profile' %}">{{ user }}</a>
+                {% else %}
+                    <a class="name" href="{% url 'user-profile' user_name=user.user_name %}">{{ user }}</a>
+                {% endif %}
+                {% if user.connectionhistory.is_online %}
+                    <p class="online">online</p>
+                {% else %}
+                    <p class="online">offline</p>
+                {% endif %}
             </div>
 
             <div class="menu-zone">
@@ -28,8 +37,28 @@
 
                 <h3>Контактная информация</h3>
                 <p class="email">Электронная почта:<br>{{ user.email }}</p>
-                <p class="phone">Телефон:<br>+8 213 429 1232</p>
-                <p class="about">О себе:<br>{{ user.about }}</p>
+                
+                {% if user.phone %}
+                    <p class="phone">Телефон:<br>{{ user.phone }}</p>
+                {% endif %}
+
+                {% if user.about %}
+                    <p class="about">О себе:<br>{{ user.about }}</p>
+                {% endif %}
+
+                {% if authors_interest %}
+                    <p class="authors-interest">Интересующие авторы:<br></p>
+                    {% for author in authors_interest %}
+                        <a href="{{ author.get_absolute_url }}" class="author-interest">{{ author.name }}</a>
+                    {% endfor %}
+                {% endif %}
+
+                {% if books_interest %}
+                    <p class="books-interest">Интересующие книги:<br></p>
+                    {% for book in books_interest %}
+                        <a href="{{ book.get_absolute_url }}" class="book-interest">{{ book.title }}</a>
+                    {% endfor %}
+                {% endif %}
                 
             </div>
         {% endblock %}
@@ -39,5 +68,9 @@
 
 
 {% block sidebar %}
+    <div class="profile-sidebar">
+        {% sidebar_genres_tag %}
 
+        {% sidebar_books_tag %}
+    </div>
 {% endblock %}

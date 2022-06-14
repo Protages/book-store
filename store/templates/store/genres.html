@@ -1,4 +1,5 @@
 {% extends 'store/base.html' %}
+{% load sidebar %}
 
 
 {% block content %}
@@ -19,5 +20,5 @@
 
 
 {% block sidebar %}
-
+    {% sidebar_books_tag %}
 {% endblock %}

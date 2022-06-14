@@ -9,7 +9,9 @@ class UserSettingForm(forms.ModelForm):
 
     class Meta:
         model = USER_MODEL
-        fields = ['first_name', 'image', 'gender', 'birthday', 'about', 'country']
+        fields = [
+            'first_name', 'image', 'gender', 'birthday', 'phone', 'about', 'country'
+        ]
         widgets = {
             'image': forms.FileInput(attrs={'type': 'file'})
         }

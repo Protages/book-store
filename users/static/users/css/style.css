@@ -4,6 +4,9 @@ body {
     padding-bottom: 20px;
     position: relative;
 }
+p {
+    margin-bottom: 0;
+}
 
 .logo {
     /* position: absolute;
@@ -185,4 +188,19 @@ label {
     float: left;
     color: rgb(112, 112, 112);
     margin-top: 20px;
+}
+
+.errors {
+    border: 1px solid red;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 0;
+    margin-top: 10px;
+    background-color: rgba(255, 0, 0, 0.085);
+}
+.error {
+    list-style: none;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
 }

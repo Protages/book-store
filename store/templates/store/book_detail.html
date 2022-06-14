@@ -1,4 +1,5 @@
 {% extends 'store/base.html' %}
+{% load sidebar %}
 
 
 {% block content %}
@@ -93,11 +94,21 @@
 
         {% for comment in comments %}
             <div class="comment" id="comment-{{ comment.id }}">
-                <div class="image">
-                    <img src="{{ comment.user.image.url }}" alt="Фото профиля">
-                </div>
+                {% if request.user == comment.user %}
+                    <a href="{% url 'profile' %}" class="image">
+                        <img src="{{ comment.user.image.url }}" alt="Фото профиля">
+                    </a>
+                {% else %}
+                    <a href="{% url 'user-profile' user_name=comment.user.user_name %}" class="image">
+                        <img src="{{ comment.user.image.url }}" alt="Фото профиля">
+                    </a>
+                {% endif %}
                 <div class="comment-info">
-                    <p class="user-name">{{ comment.user }}</p>
+                    {% if request.user == comment.user %}
+                        <a href="{% url 'profile' %}" class="user-name">{{ comment.user }}</a>
+                    {% else %}
+                        <a href="{% url 'user-profile' user_name=comment.user.user_name %}" class="user-name">{{ comment.user }}</a>
+                    {% endif %}
                     <p class="date">{{ comment.date }}</p>
                     
                     {% if comment.user == request.user and not comment.is_delete %}
@@ -128,11 +139,22 @@
                         <p id="subcomment-to-comment-{{ subcomment.comment_to.id }}" onclick="show_comment(this)">
                             &#8656; ответ {{ subcomment.comment_to.user }}</p>
                     </div>
-                    <div class="image">
-                        <img src="{{ subcomment.user.image.url }}" alt="Фото профиля">
-                    </div>
+                    {% if request.user == subcomment.user %}
+                        <a href="{% url 'profile' %}" class="image">
+                            <img src="{{ subcomment.user.image.url }}" alt="Фото профиля">
+                        </a>
+                    {% else %}
+                        <a href="{% url 'user-profile' user_name=subcomment.user.user_name %}" class="image">
+                            <img src="{{ subcomment.user.image.url }}" alt="Фото профиля">
+                        </a>
+                    {% endif %}
+                    
                     <div class="comment-info">
-                        <p class="user-name">{{ subcomment.user }}</p>
+                        {% if request.user == subcomment.user %}
+                            <a href="{% url 'profile' %}" class="user-name">{{ subcomment.user }}</a>
+                        {% else %}
+                            <a href="{% url 'user-profile' user_name=subcomment.user.user_name %}" class="user-name">{{ subcomment.user }}</a>
+                        {% endif %}
                         <p class="date">{{ subcomment.date }}</p>
                         {% if subcomment.user == request.user and not subcomment.is_delete %}
                             <p class="delete" id="{{ subcomment.id }}" onclick="comment_delete(this)">удалить</p>
@@ -156,5 +178,14 @@
                 {% endfor %}
             {% endif %}
         {% endfor %}
+    </div>
+{% endblock %}
+
+
+{% block sidebar %}
+    <div class="book-detail-sidebar">
+        {% sidebar_genres_tag %}
+
+        {% sidebar_books_tag %}
     </div>
 {% endblock %}

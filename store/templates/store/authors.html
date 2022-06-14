@@ -18,7 +18,14 @@
                 <img src="{{ author.image.url }}" alt="{{ author.name }}">
                 <div class="info">
                     <h4 class="title">{{ author.name }}</h4>
-                    <span class="books-count">{{ author.books_count }} книг</span>
+                    <span class="books-count">
+                        {% if author.books_count %}
+                            {{ author.books_count }}
+                        {% else %}
+                            0
+                        {% endif %}
+                         книг
+                    </span>
                 </div>
             </a>
         {% endfor %}
