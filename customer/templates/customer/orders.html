@@ -39,7 +39,7 @@
     {% endfor %}
     </div>
 
-    {% include 'store/paginator.html' %}
+    {% include 'store/paginator.html' with other_params="q="|add:order_sort_selected %}
     
 </div>
     

@@ -41,7 +41,7 @@ class SearchView(MenuMixin, View):
     def get(self, request, *args, **kwargs):
         context = self.get_menu_context()
 
-        query = self.request.GET.get('q').replace(' ', '')
+        query = ' '.join(self.request.GET.get('q').split())
         category = self.request.GET.get('category')
 
         books = Book.objects.filter(title__icontains=query)

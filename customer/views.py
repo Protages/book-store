@@ -111,6 +111,7 @@ class OrdersView(LoginRequiredMixin, OrderSortAndUserMenuMixin, ListView):
 
     def get(self, request, *args, **kwargs):
         self.query = self.request.GET.get('q')
+        print('in orders view!!!!!', self.query)
         return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
@@ -124,6 +125,7 @@ class OrdersView(LoginRequiredMixin, OrderSortAndUserMenuMixin, ListView):
         return context
 
     def get_queryset(self):
+        print('in orders view!!!!!', self.query)
         if self.query:
             return Cart.objects.get(user=self.request.user).order_set.filter(
                 status=self.query
