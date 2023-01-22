@@ -16,14 +16,11 @@ class FavouritesUserConsumer(WebsocketConsumer):
 
     def connect(self):
         self.user = self.scope['user']
-        # if not self.user.is_authenticated:
-        #     self.disconnect('User is not authenticated, please log in.')
         self.accept()
 
     def receive(self, text_data):
         text_data = json.loads(text_data)
         message_type = text_data['message_type']
-        print(text_data)
 
         if message_type == 'books_in_favourites':
             self.get_all_books_id_favourites()
@@ -62,14 +59,11 @@ class CartBooksConsumer(WebsocketConsumer):
 
     def connect(self):
         self.user = self.scope['user']
-        # if not self.user.is_authenticated:
-        #     self.disconnect('User is not authenticated, please log in.')
         self.accept()
 
     def receive(self, text_data):
         text_data = json.loads(text_data)
         message_type = text_data['message_type']
-        print(text_data)
 
         if message_type == 'books_in_cart':
             self.get_all_books_id_cart()
@@ -100,14 +94,11 @@ class CartUserConsumer(WebsocketConsumer):
 
     def connect(self):
         self.user = self.scope['user']
-        # if not self.user.is_authenticated:
-        #     self.disconnect('User is not authenticated, please log in.')
         self.accept()
 
     def receive(self, text_data):
         text_data = json.loads(text_data)
         message_type = text_data['message_type']
-        print(text_data)
 
         if message_type == 'activate_position':
             self.activate_position(text_data['position_id'])
@@ -158,14 +149,11 @@ class CommentUserConsumer(WebsocketConsumer):
 
     def connect(self):
         self.user = self.scope['user']
-        # if not self.user.is_authenticated:
-        #     self.disconnect('User is not authenticated, please log in.')
         self.accept()
 
     def receive(self, text_data):
         text_data = json.loads(text_data)
         message_type = text_data['message_type']
-        print(text_data)
 
         if message_type == 'comment_delete':
             self.comment_delete(int(text_data['comment_id']))
@@ -223,18 +211,15 @@ class ConnectionHistoryConsumer(WebsocketConsumer):
     def connect(self):
         self.user = self.scope['user']
         if self.user.is_authenticated:
-            print('User was connected -------------- ', self.user)
             self.update_user_status('online')
         self.accept()
 
     def disconnect(self, code=None):
         if self.user.is_authenticated:
-            print('User was disconnected -------------- ', self.user)
             self.update_user_status('offline')
 
     def receive(self, text_data):
         text_data = json.loads(text_data)
-        print(text_data)
 
     def update_user_status(self, status):
         connection, created = ConnectionHistory.objects.get_or_create(user=self.user)

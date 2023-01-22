@@ -62,7 +62,7 @@ class CartView(LoginRequiredMixin, UserMenuMixin, ListView):
         return Position.objects.filter(cart=self.cart, is_close=False)
 
 
-class MakeOrderView(LoginRequiredMixin, UserMenuMixin, View):  # CreateView mb!!!
+class MakeOrderView(LoginRequiredMixin, UserMenuMixin, View):
     template_name = 'customer/make_order.html'
     success_url = 'orders'
 
@@ -111,7 +111,6 @@ class OrdersView(LoginRequiredMixin, OrderSortAndUserMenuMixin, ListView):
 
     def get(self, request, *args, **kwargs):
         self.query = self.request.GET.get('q')
-        print('in orders view!!!!!', self.query)
         return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
@@ -125,7 +124,6 @@ class OrdersView(LoginRequiredMixin, OrderSortAndUserMenuMixin, ListView):
         return context
 
     def get_queryset(self):
-        print('in orders view!!!!!', self.query)
         if self.query:
             return Cart.objects.get(user=self.request.user).order_set.filter(
                 status=self.query
@@ -201,9 +199,6 @@ class SettingsView(LoginRequiredMixin, UserMenuMixin, FormView):
         kwargs = super().get_form_kwargs()
         kwargs.update({'instance': self.request.user})
         return kwargs
-
-    # def get_form(self, form_class=None):
-    #     return self.form_class(instance=self.request.user, **self.get_form_kwargs())
 
 
 class ResetPasswordView(LoginRequiredMixin, UserMenuMixin, View):

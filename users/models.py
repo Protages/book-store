@@ -6,7 +6,6 @@ from django.contrib.auth.models import (
     PermissionsMixin
 )
 from django.contrib.auth.validators import UnicodeUsernameValidator
-#  from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 
 from django_countries.fields import CountryField

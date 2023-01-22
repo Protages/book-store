@@ -3,7 +3,6 @@ from django.urls import reverse
 from django.views import View
 from django.views.generic import FormView
 from django.contrib.auth import authenticate, login, logout
-# from django.contrib.auth.views import LoginView as BaseLoginView
 from django.contrib import messages
 
 from urllib.parse import urlencode
